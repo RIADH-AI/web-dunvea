@@ -1,0 +1,61 @@
+{%- liquid
+  assign heading_tag = section.settings.heading_tag
+-%}
+<section class="banner banner--{{ section.settings.alignment }}{% if section.settings.vertical == 'middle' %} banner--middle{% endif %}{% if section.settings.height == 'small' %} banner--small{% endif %}{% if section.settings.style == 'light' %} banner--light{% endif %}" style="--overlay: {{ section.settings.overlay | divided_by: 100.0 }};">
+  <div class="banner__media">
+    {%- if section.settings.image != blank -%}
+      {%- if section.settings.image_mobile != blank -%}
+        <picture>
+          <source media="(max-width: 749px)" srcset="{{ section.settings.image_mobile | image_url: width: 800 }} 800w, {{ section.settings.image_mobile | image_url: width: 1200 }} 1200w" sizes="100vw">
+          {{ section.settings.image | image_url: width: 3000 | image_tag: widths: '750, 1100, 1500, 2000, 2500, 3000', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.image.alt }}
+        </picture>
+      {%- else -%}
+        {{ section.settings.image | image_url: width: 3000 | image_tag: widths: '750, 1100, 1500, 2000, 2500, 3000', sizes: '100vw', loading: 'eager', fetchpriority: 'high', alt: section.settings.image.alt }}
+      {%- endif -%}
+    {%- else -%}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder' }}
+    {%- endif -%}
+  </div>
+  <div class="banner__content page-width">
+    <div class="banner__box">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <{{ heading_tag }} class="banner__heading">{{ section.settings.heading }}</{{ heading_tag }}>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="banner__text">{{ section.settings.text }}</div>{%- endif -%}
+      <div class="banner__buttons">
+        {%- if section.settings.button_label_1 != blank -%}
+          <a href="{{ section.settings.button_link_1 | default: routes.all_products_collection_url }}" class="button{% if section.settings.style == 'dark' %} button--light{% endif %} button--large">{{ section.settings.button_label_1 }}</a>
+        {%- endif -%}
+        {%- if section.settings.button_label_2 != blank -%}
+          <a href="{{ section.settings.button_link_2 | default: '#' }}" class="button button--secondary button--large{% if section.settings.style == 'dark' %} button--outline-light{% endif %}">{{ section.settings.button_label_2 }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bannière image",
+  "tag": "section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "image_picker", "id": "image_mobile", "label": "Image mobile (optionnel)", "info": "Format portrait conseillé." },
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Le bois massif, à hauteur de mur" },
+    { "type": "select", "id": "heading_tag", "label": "Balise du titre", "default": "h2", "options": [ { "value": "h1", "label": "H1 (une seule par page)" }, { "value": "h2", "label": "H2" } ] },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "text", "id": "button_label_1", "label": "Bouton 1" },
+    { "type": "url", "id": "button_link_1", "label": "Lien bouton 1" },
+    { "type": "text", "id": "button_label_2", "label": "Bouton 2" },
+    { "type": "url", "id": "button_link_2", "label": "Lien bouton 2" },
+    { "type": "select", "id": "style", "label": "Style", "default": "dark", "options": [ { "value": "dark", "label": "Texte clair sur image" }, { "value": "light", "label": "Texte foncé sur image claire" } ] },
+    { "type": "range", "id": "overlay", "label": "Assombrissement", "min": 0, "max": 80, "step": 5, "unit": "%", "default": 40 },
+    { "type": "select", "id": "alignment", "label": "Alignement", "default": "left", "options": [ { "value": "left", "label": "Gauche" }, { "value": "center", "label": "Centre" } ] },
+    { "type": "select", "id": "vertical", "label": "Position verticale", "default": "bottom", "options": [ { "value": "bottom", "label": "Bas" }, { "value": "middle", "label": "Milieu" } ] },
+    { "type": "select", "id": "height", "label": "Hauteur", "default": "large", "options": [ { "value": "large", "label": "Grande" }, { "value": "small", "label": "Réduite" } ] }
+  ],
+  "presets": [ { "name": "Bannière image" } ]
+}
+{% endschema %}

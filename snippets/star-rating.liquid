@@ -1,0 +1,35 @@
+{%- comment -%}
+  Note étoilée à partir des métachamps d'avis standards de Shopify
+  (reviews.rating / reviews.rating_count), alimentés par Judge.me.
+
+  Paramètres :
+  - product : objet produit (obligatoire)
+  - link : ancre vers la section avis (optionnel, ex. '#avis')
+  - show_empty : affiche « Soyez le premier à donner votre avis » si aucun avis
+{%- endcomment -%}
+{%- liquid
+  assign rating = product.metafields.reviews.rating.value
+  assign rating_count = product.metafields.reviews.rating_count.value | default: 0
+-%}
+{%- if rating != blank and rating_count > 0 -%}
+  {%- liquid
+    assign rating_value = rating.rating | default: 0
+    assign rating_max = rating.scale_max | default: 5
+    assign rating_percent = rating_value | times: 100.0 | divided_by: rating_max | round: 1
+  -%}
+  {%- if link != blank %}<a class="rating" href="{{ link }}">{% else %}<div class="rating">{% endif -%}
+    <span class="rating__stars" style="--rating-percent: {{ rating_percent }}%;" role="img" aria-label="{{ 'products.rating.stars_label' | t: rating: rating_value, max: rating_max }}">
+      <span class="rating__stars-bg">{% for i in (1..5) %}{% render 'icon', icon: 'star', size: 15 %}{% endfor %}</span>
+      <span class="rating__stars-fill">{% for i in (1..5) %}{% render 'icon', icon: 'star', size: 15 %}{% endfor %}</span>
+    </span>
+    <span class="rating__value">{{ rating_value | round: 1 }}</span>
+    <span class="rating__count">({{ 'products.rating.count' | t: count: rating_count }})</span>
+  {%- if link != blank %}</a>{% else %}</div>{% endif -%}
+{%- elsif show_empty -%}
+  {%- if link != blank %}<a class="rating rating--empty" href="{{ link }}">{% else %}<div class="rating rating--empty">{% endif -%}
+    <span class="rating__stars" style="--rating-percent: 0%;" aria-hidden="true">
+      <span class="rating__stars-bg">{% for i in (1..5) %}{% render 'icon', icon: 'star', size: 15 %}{% endfor %}</span>
+    </span>
+    <span class="rating__count">{{ 'products.rating.be_first' | t }}</span>
+  {%- if link != blank %}</a>{% else %}</div>{% endif -%}
+{%- endif -%}

@@ -1,0 +1,44 @@
+<section class="section-spacing bg-{{ section.settings.background }}" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    <div class="split{% if section.settings.reverse %} split--reverse{% endif %}{% if section.settings.wide_media %} split--wide-media{% endif %} reveal">
+      <div class="split__media ratio ratio--{{ section.settings.ratio }}">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'lazy', widths: '500, 800, 1100, 1400, 1800', sizes: '(min-width: 990px) 50vw, 100vw', alt: section.settings.image.alt }}
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' }}
+        {%- endif -%}
+      </div>
+      <div class="split__content">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2 class="h2">{{ section.settings.heading }}</h2>{%- endif -%}
+        {%- if section.settings.text != blank -%}<div class="rte rte--large">{{ section.settings.text }}</div>{%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link | default: '#' }}" class="button{% if section.settings.button_secondary %} button--secondary{% endif %}">{{ section.settings.button_label }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image et texte",
+  "tag": "div",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "select", "id": "ratio", "label": "Format de l'image", "default": "portrait", "options": [ { "value": "portrait", "label": "Portrait" }, { "value": "square", "label": "Carré" }, { "value": "landscape", "label": "Paysage" } ] },
+    { "type": "checkbox", "id": "reverse", "label": "Image à droite", "default": false },
+    { "type": "checkbox", "id": "wide_media", "label": "Image plus large", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Notre atelier" },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "text", "id": "button_label", "label": "Bouton" },
+    { "type": "url", "id": "button_link", "label": "Lien du bouton" },
+    { "type": "checkbox", "id": "button_secondary", "label": "Bouton contour", "default": true },
+    { "type": "select", "id": "background", "label": "Fond", "default": "beige", "options": [ { "value": "beige", "label": "Beige" }, { "value": "blanc", "label": "Blanc" } ] },
+    { "type": "range", "id": "padding_top", "label": "Marge haute", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_bottom", "label": "Marge basse", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 112 }
+  ],
+  "presets": [ { "name": "Image et texte" } ]
+}
+{% endschema %}

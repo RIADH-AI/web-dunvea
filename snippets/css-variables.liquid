@@ -1,0 +1,49 @@
+{%- comment -%}
+  Design tokens DUNVEA, générés depuis les réglages du thème.
+{%- endcomment -%}
+{%- liquid
+  assign heading_font = settings.type_heading_font
+  assign body_font = settings.type_body_font
+  assign body_font_bold = body_font | font_modify: 'weight', 'bold'
+  assign body_font_medium = body_font | font_modify: 'weight', '500'
+  assign heading_font_bold = heading_font | font_modify: 'weight', '700'
+-%}
+<link rel="preload" as="font" href="{{ body_font | font_url }}" type="font/woff2" crossorigin>
+<link rel="preload" as="font" href="{{ heading_font | font_url }}" type="font/woff2" crossorigin>
+<style>
+  {{ heading_font | font_face: font_display: 'swap' }}
+  {{ heading_font_bold | font_face: font_display: 'swap' }}
+  {{ body_font | font_face: font_display: 'swap' }}
+  {{ body_font_medium | font_face: font_display: 'swap' }}
+  {{ body_font_bold | font_face: font_display: 'swap' }}
+
+  :root {
+    --color-charbon: {{ settings.color_text }};
+    --color-terre: {{ settings.color_accent }};
+    --color-beige: {{ settings.color_background }};
+    --color-blanc: {{ settings.color_surface }};
+    --color-button: {{ settings.color_button }};
+    --color-button-text: {{ settings.color_button_text }};
+    --color-sale: {{ settings.color_sale }};
+
+    --color-text: var(--color-charbon);
+    --color-text-soft: {{ settings.color_text | color_mix: settings.color_background, 72 }};
+    --color-text-muted: {{ settings.color_text | color_mix: settings.color_background, 55 }};
+    --color-border: {{ settings.color_text | color_mix: settings.color_background, 16 }};
+    --color-border-strong: {{ settings.color_text | color_mix: settings.color_background, 32 }};
+    --color-beige-deep: {{ settings.color_background | color_darken: 4 }};
+    --color-terre-soft: {{ settings.color_accent | color_mix: settings.color_background, 14 }};
+
+    --font-heading-family: {{ heading_font.family }}, {{ heading_font.fallback_families }};
+    --font-heading-weight: {{ heading_font.weight }};
+    --font-heading-weight-bold: {{ heading_font_bold.weight | default: 700 }};
+    --font-body-family: {{ body_font.family }}, {{ body_font.fallback_families }};
+    --font-body-weight: {{ body_font.weight }};
+    --font-body-weight-medium: {{ body_font_medium.weight | default: 500 }};
+    --font-body-weight-bold: {{ body_font_bold.weight | default: 700 }};
+    --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
+
+    --page-width: {{ settings.page_width }}px;
+    --radius: {{ settings.radius }}px;
+  }
+</style>

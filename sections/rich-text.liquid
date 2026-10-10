@@ -1,0 +1,36 @@
+<section class="rich-text{% if section.settings.style == 'quote' %} rich-text--quote{% endif %} section-spacing bg-{{ section.settings.background }}" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px; --align: {{ section.settings.alignment }};">
+  <div class="page-width">
+    <div class="rich-text__inner reveal">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <{{ section.settings.heading_tag }} class="rich-text__heading">{{ section.settings.heading }}</{{ section.settings.heading_tag }}>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}<div class="rte">{{ section.settings.text }}</div>{%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: '#' }}" class="button{% if section.settings.button_secondary %} button--secondary{% endif %}{% if section.settings.background == 'charbon' or section.settings.background == 'terre' %} button--light{% endif %}">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Texte",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Moins de pièces, mieux faites." },
+    { "type": "select", "id": "heading_tag", "label": "Balise du titre", "default": "h2", "options": [ { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" }, { "value": "p", "label": "Paragraphe" } ] },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "text", "id": "button_label", "label": "Bouton" },
+    { "type": "url", "id": "button_link", "label": "Lien du bouton" },
+    { "type": "checkbox", "id": "button_secondary", "label": "Bouton contour", "default": true },
+    { "type": "select", "id": "style", "label": "Style", "default": "default", "options": [ { "value": "default", "label": "Standard" }, { "value": "quote", "label": "Citation (titre en police fine)" } ] },
+    { "type": "select", "id": "alignment", "label": "Alignement", "default": "center", "options": [ { "value": "left", "label": "Gauche" }, { "value": "center", "label": "Centre" } ] },
+    { "type": "select", "id": "background", "label": "Fond", "default": "beige", "options": [ { "value": "beige", "label": "Beige" }, { "value": "blanc", "label": "Blanc" }, { "value": "charbon", "label": "Charbon" }, { "value": "terre", "label": "Terre" } ] },
+    { "type": "range", "id": "padding_top", "label": "Marge haute", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_bottom", "label": "Marge basse", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 112 }
+  ],
+  "presets": [ { "name": "Texte" } ]
+}
+{% endschema %}

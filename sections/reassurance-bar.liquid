@@ -1,0 +1,37 @@
+<section class="reassurance-bar bg-{{ section.settings.background }}" style="--pt: {{ section.settings.padding }}px; --pb: {{ section.settings.padding }}px;">
+  <div class="page-width section-spacing">
+    <ul class="reassurance" role="list">
+      {%- for block in section.blocks -%}
+        <li class="reassurance__item" {{ block.shopify_attributes }}>
+          <span class="reassurance__icon">{% render 'icon', icon: block.settings.icon, size: 28 %}</span>
+          <span class="reassurance__title">{{ block.settings.title }}</span>
+          {%- if block.settings.text != blank -%}<span class="reassurance__text">{{ block.settings.text }}</span>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Réassurance",
+  "tag": "div",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Élément",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icône", "default": "truck", "options": [ { "value": "truck", "label": "Camion" }, { "value": "return", "label": "Retour" }, { "value": "wood", "label": "Bois" }, { "value": "hand", "label": "Main" }, { "value": "shield", "label": "Bouclier" }, { "value": "box", "label": "Colis" }, { "value": "leaf", "label": "Feuille" } ] },
+        { "type": "text", "id": "title", "label": "Titre", "default": "Livraison offerte" },
+        { "type": "text", "id": "text", "label": "Texte" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "select", "id": "background", "label": "Fond", "default": "beige", "options": [ { "value": "beige", "label": "Beige" }, { "value": "blanc", "label": "Blanc" } ] },
+    { "type": "range", "id": "padding", "label": "Marges", "min": 16, "max": 96, "step": 8, "unit": "px", "default": 48 }
+  ],
+  "presets": [ { "name": "Réassurance", "blocks": [ { "type": "item" }, { "type": "item" }, { "type": "item" }, { "type": "item" } ] } ]
+}
+{% endschema %}

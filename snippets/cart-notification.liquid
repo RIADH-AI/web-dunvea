@@ -1,0 +1,26 @@
+{%- comment -%} Panneau de confirmation après ajout au panier (rempli par theme.js). {%- endcomment -%}
+<cart-notification class="cart-notification" hidden>
+  <div class="cart-notification__overlay" data-close></div>
+  <div class="cart-notification__panel" role="dialog" aria-modal="true" aria-labelledby="CartNotificationTitle" tabindex="-1">
+    <div class="cart-notification__header">
+      <p id="CartNotificationTitle" class="cart-notification__title">
+        {%- render 'icon', icon: 'check', size: 18 -%}
+        {{ 'cart.notification.added' | t }}
+      </p>
+      <button type="button" class="icon-button" data-close aria-label="{{ 'accessibility.close' | t }}">
+        {%- render 'icon', icon: 'close', size: 20 -%}
+      </button>
+    </div>
+    <div class="cart-notification__item" data-item></div>
+    <p class="cart-notification__note">{%- render 'icon', icon: 'truck', size: 18 -%} {{ settings.cart_shipping_note }}</p>
+    <div class="cart-notification__actions">
+      <a href="{{ routes.cart_url }}" class="button button--secondary button--full">
+        {{- 'cart.notification.view_cart' | t }} (<span data-cart-count>{{ cart.item_count }}</span>)
+      </a>
+      <form action="{{ routes.cart_url }}" method="post">
+        <button type="submit" name="checkout" class="button button--full">{{ 'cart.checkout' | t }}</button>
+      </form>
+      <button type="button" class="link-button" data-close>{{ 'cart.notification.continue' | t }}</button>
+    </div>
+  </div>
+</cart-notification>

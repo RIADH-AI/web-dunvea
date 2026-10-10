@@ -1,0 +1,73 @@
+{%- comment -%}
+  Caractéristiques techniques — groupes (ex. Étagère / Miroir) et lignes libellé / valeur.
+  Les lignes appartiennent au dernier groupe qui les précède.
+{%- endcomment -%}
+<section id="{{ section.settings.anchor | default: 'caracteristiques' }}" class="specs section-spacing bg-{{ section.settings.background }}" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width page-width--narrow">
+    <header class="section-header">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="h2">{{ section.settings.heading }}</h2>
+      {%- if section.settings.intro != blank -%}<div class="rte section-header__intro">{{ section.settings.intro }}</div>{%- endif -%}
+    </header>
+
+    <div class="specs__groups">
+      {%- assign first_block = section.blocks.first -%}
+      {%- if first_block != blank and first_block.type != 'group' -%}
+        <div class="specs__group">
+          <dl class="specs__list">
+            {%- for row in section.blocks -%}
+              {%- if row.type == 'group' -%}{%- break -%}{%- endif -%}
+              {%- render 'spec-row', block: row -%}
+            {%- endfor -%}
+          </dl>
+        </div>
+      {%- endif -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'group' -%}
+          <div class="specs__group" {{ block.shopify_attributes }}>
+            <h3 class="specs__group-title">{{ block.settings.title }}</h3>
+            <dl class="specs__list">
+              {%- for row in section.blocks offset: forloop.index -%}
+                {%- if row.type == 'group' -%}{%- break -%}{%- endif -%}
+                {%- render 'spec-row', block: row -%}
+              {%- endfor -%}
+            </dl>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Fiche technique",
+  "tag": "div",
+  "blocks": [
+    {
+      "type": "group",
+      "name": "Groupe",
+      "settings": [ { "type": "text", "id": "title", "label": "Titre du groupe", "default": "Étagère" } ]
+    },
+    {
+      "type": "row",
+      "name": "Ligne",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Libellé", "default": "Dimensions" },
+        { "type": "text", "id": "value", "label": "Valeur", "default": "50 × 14 × 5 cm" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancre (id)", "default": "caracteristiques" },
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Fiche technique" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Dimensions et caractéristiques" },
+    { "type": "richtext", "id": "intro", "label": "Introduction" },
+    { "type": "select", "id": "background", "label": "Fond", "default": "blanc", "options": [ { "value": "beige", "label": "Beige" }, { "value": "blanc", "label": "Blanc" } ] },
+    { "type": "range", "id": "padding_top", "label": "Marge haute", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "label": "Marge basse", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 }
+  ],
+  "presets": [ { "name": "Fiche technique", "blocks": [ { "type": "group" }, { "type": "row" } ] } ],
+  "enabled_on": { "templates": ["product"] }
+}
+{% endschema %}

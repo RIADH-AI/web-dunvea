@@ -1,0 +1,21 @@
+{
+  "type": "footer",
+  "name": "Pied de page",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "tagline": "<p>Étagères flottantes et miroirs organiques en bois massif, faits main dans notre atelier.</p>",
+        "menu_1": "footer",
+        "menu_title_1": "Boutique",
+        "menu_title_2": "Aide",
+        "show_newsletter": true,
+        "newsletter_title": "Des nouvelles de l'atelier",
+        "newsletter_text": "Nouvelles pièces, coulisses de fabrication. Un e-mail par mois, pas plus.",
+        "copyright": "Bois massif, fait main",
+        "show_payment_icons": true
+      }
+    }
+  },
+  "order": ["footer"]
+}

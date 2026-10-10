@@ -1,0 +1,210 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "settings": {
+        "eyebrow": "L'atelier",
+        "heading": "Le même atelier, les mêmes mains",
+        "heading_tag": "h1",
+        "text": "<p>Chaque pièce DUNVEA est découpée, poncée et finie à la main. Voici comment.</p>",
+        "style": "dark",
+        "overlay": 45,
+        "alignment": "left",
+        "vertical": "bottom",
+        "height": "small"
+      }
+    },
+    "intro": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "Notre parti pris",
+        "heading": "Moins de pièces, mieux faites.",
+        "text": "<p>Nous avons choisi de ne fabriquer que quelques objets : une étagère flottante, un miroir organique, et les deux réunis. Tout notre temps va à ces pièces-là.</p><p>Le travail manuel n'est pas un argument marketing : c'est une contrainte que nous avons choisie. Elle nous oblige à regarder chaque planche, à suivre son fil, à décider où passera la coupe. Une machine ne sent pas le bois comme un artisan le sent.</p>",
+        "alignment": "center",
+        "background": "beige",
+        "padding_top": 112,
+        "padding_bottom": 80
+      }
+    },
+    "process": {
+      "type": "multicolumn",
+      "settings": {
+        "eyebrow": "La fabrication",
+        "heading": "Quatre étapes, toutes à la main",
+        "marker": "number",
+        "ratio": "portrait",
+        "center": false,
+        "background": "beige",
+        "padding_top": 40,
+        "padding_bottom": 112
+      },
+      "blocks": {
+        "s1": {
+          "type": "column",
+          "settings": {
+            "title": "Le choix du bois",
+            "text": "<p>Chaque pièce est taillée dans un bloc unique de frêne massif européen ou d'acajou. Nous lisons le fil et les veines avant de décider de la coupe.</p>"
+          }
+        },
+        "s2": {
+          "type": "column",
+          "settings": {
+            "title": "La découpe",
+            "text": "<p>L'étagère est mise à dimension, le cadre du miroir dessiné suivant une ligne libre. Aucune forme n'est reproduite à l'identique.</p>"
+          }
+        },
+        "s3": {
+          "type": "column",
+          "settings": {
+            "title": "Le ponçage et le biseau",
+            "text": "<p>L'arête avant de l'étagère est biseautée à la main ; les courbes du miroir sont reprises jusqu'à ce que le bois soit doux sous les doigts.</p>"
+          }
+        },
+        "s4": {
+          "type": "column",
+          "settings": {
+            "title": "La finition",
+            "text": "<p>Une huile protectrice nourrit le bois et révèle son grain, sans le recouvrir d'une couche de vernis plastique.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ]
+    },
+    "massif": {
+      "type": "image-with-text",
+      "settings": {
+        "ratio": "portrait",
+        "reverse": false,
+        "wide_media": true,
+        "eyebrow": "Le matériau",
+        "heading": "Du bois massif, de bout en bout",
+        "text": "<p>Pas de placage, pas de MDF caché sous une couche de vernis. Ce que vous touchez quand vous passez la main sur une pièce DUNVEA, c'est le grain réel du bois, pas une imitation imprimée.</p><p>Le bois massif vit : il se patine, prend la lumière, gagne en caractère avec les années. Dans dix ans, votre étagère aura pris une teinte que l'aggloméré ne connaîtra jamais.</p>",
+        "background": "blanc",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "woods": {
+      "type": "wood-comparison",
+      "settings": {
+        "eyebrow": "Deux bois",
+        "heading": "Clair ou profond, toujours massif",
+        "text": "<p>Chaque pièce DUNVEA existe en deux essences. Le choix se fait selon la lumière de la pièce et l'ambiance que vous cherchez.</p>",
+        "background": "blanc",
+        "padding_top": 112,
+        "padding_bottom": 112
+      },
+      "blocks": {
+        "frene": {
+          "type": "wood",
+          "settings": {
+            "name": "Frêne massif",
+            "swatch": "#D9B98C",
+            "text": "Un bois clair, au grain fin et élégant, originaire d'Europe. Sa couleur naturelle, dorée et miel, éclaire un mur sans l'écraser. Dense et très résistant, c'est un bois d'ébéniste par excellence.",
+            "traits": "Clair, Grain fin, Très résistant, Européen"
+          }
+        },
+        "acajou": {
+          "type": "wood",
+          "settings": {
+            "name": "Acajou",
+            "swatch": "#6E3B2B",
+            "text": "Un bois sombre, au grain profond et chaleureux. Sa couleur brun-rouge apporte immédiatement une présence chaleureuse et sophistiquée. Un bois noble, connu pour sa durabilité et sa beauté.",
+            "traits": "Sombre, Grain profond, Durable, Noble"
+          }
+        }
+      },
+      "block_order": [
+        "frene",
+        "acajou"
+      ]
+    },
+    "unique": {
+      "type": "image-with-text",
+      "settings": {
+        "ratio": "portrait",
+        "reverse": true,
+        "wide_media": true,
+        "eyebrow": "Pièces uniques",
+        "heading": "Les signatures de votre pièce",
+        "text": "<p>Parce que tout est fait à la main, deux pièces ne sont jamais parfaitement identiques. Les veines du bois, la nuance exacte de la couleur, la subtilité du grain varient d'une planche à l'autre.</p><p>Ce ne sont pas des défauts : ce sont les traces du bois et du geste. Ce qui fait que votre étagère est la vôtre.</p>",
+        "background": "beige",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    },
+    "stats": {
+      "type": "stats",
+      "settings": {
+        "background": "blanc",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "k1": {
+          "type": "stat",
+          "settings": {
+            "value": "100 %",
+            "label": "bois massif"
+          }
+        },
+        "k2": {
+          "type": "stat",
+          "settings": {
+            "value": "0",
+            "label": "vis apparente"
+          }
+        },
+        "k3": {
+          "type": "stat",
+          "settings": {
+            "value": "10 min",
+            "label": "d'installation"
+          }
+        },
+        "k4": {
+          "type": "stat",
+          "settings": {
+            "value": "14 jours",
+            "label": "pour changer d'avis"
+          }
+        }
+      },
+      "block_order": [
+        "k1",
+        "k2",
+        "k3",
+        "k4"
+      ]
+    },
+    "cta": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "La collection",
+        "heading": "Les pièces de l'atelier",
+        "products_to_show": 4,
+        "columns": "4",
+        "center": true,
+        "button_label": "Voir toute la collection",
+        "background": "beige",
+        "padding_top": 112,
+        "padding_bottom": 112
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "intro",
+    "process",
+    "massif",
+    "woods",
+    "unique",
+    "stats",
+    "cta"
+  ]
+}

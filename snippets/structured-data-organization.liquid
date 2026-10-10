@@ -1,0 +1,44 @@
+{%- comment -%} JSON-LD Organization + WebSite (page d'accueil uniquement). {%- endcomment -%}
+{%- if request.page_type == 'index' -%}
+  {%- liquid
+    assign same_as = ''
+    if settings.social_instagram_link != blank
+      assign same_as = same_as | append: settings.social_instagram_link | append: '|'
+    endif
+    if settings.social_pinterest_link != blank
+      assign same_as = same_as | append: settings.social_pinterest_link | append: '|'
+    endif
+    if settings.social_tiktok_link != blank
+      assign same_as = same_as | append: settings.social_tiktok_link | append: '|'
+    endif
+    if settings.social_facebook_link != blank
+      assign same_as = same_as | append: settings.social_facebook_link | append: '|'
+    endif
+    assign same_as = same_as | split: '|'
+  -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "DUNVEA",
+      "url": {{ request.origin | append: routes.root_url | json }},
+      {%- if settings.logo %}
+      "logo": {{ settings.logo | image_url: width: 600 | prepend: 'https:' | json }},
+      {%- endif %}
+      "sameAs": {{ same_as | json }}
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "DUNVEA",
+      "url": {{ request.origin | append: routes.root_url | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ request.origin | append: routes.search_url | append: '?q={search_term_string}' | json }},
+        "query-input": "required name=search_term_string"
+      }
+    }
+  </script>
+{%- endif -%}

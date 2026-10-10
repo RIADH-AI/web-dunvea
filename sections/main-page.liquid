@@ -1,0 +1,29 @@
+<section class="section-spacing bg-{{ section.settings.background }}" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width page-width--text">
+    {%- if section.settings.show_breadcrumbs -%}{%- render 'breadcrumbs' -%}{%- endif -%}
+    {%- if section.settings.show_title -%}
+      <header class="page-header">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h1 class="h1">{{ page.title | escape }}</h1>
+      </header>
+    {%- endif -%}
+    {%- if page.content != blank -%}
+      <div class="rte rte--large">{{ page.content }}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contenu de la page",
+  "tag": "div",
+  "settings": [
+    { "type": "checkbox", "id": "show_breadcrumbs", "label": "Fil d'Ariane", "default": false },
+    { "type": "checkbox", "id": "show_title", "label": "Afficher le titre (H1)", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre" },
+    { "type": "select", "id": "background", "label": "Fond", "default": "beige", "options": [ { "value": "beige", "label": "Beige" }, { "value": "blanc", "label": "Blanc" } ] },
+    { "type": "range", "id": "padding_top", "label": "Marge haute", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "label": "Marge basse", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 80 }
+  ]
+}
+{% endschema %}

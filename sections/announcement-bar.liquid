@@ -1,0 +1,38 @@
+<announcement-bar class="announcement" data-speed="{{ section.settings.speed }}" role="region" aria-label="{{ 'general.announcement' | t }}">
+  <div class="announcement__inner">
+    <div class="announcement__messages">
+      {%- for block in section.blocks -%}
+        <p class="announcement__message{% if forloop.first %} is-active{% endif %}" {{ block.shopify_attributes }}>
+          {%- if block.settings.link != blank -%}
+            <a href="{{ block.settings.link }}">{{ block.settings.text }}</a>
+          {%- else -%}
+            {{ block.settings.text }}
+          {%- endif -%}
+        </p>
+      {%- endfor -%}
+    </div>
+  </div>
+</announcement-bar>
+
+{% schema %}
+{
+  "name": "Barre d'annonce",
+  "tag": "div",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "message",
+      "name": "Message",
+      "settings": [
+        { "type": "text", "id": "text", "label": "Texte", "default": "Livraison offerte en France métropolitaine" },
+        { "type": "url", "id": "link", "label": "Lien" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "range", "id": "speed", "label": "Rotation (secondes)", "min": 3, "max": 10, "step": 1, "unit": "s", "default": 5 }
+  ],
+  "presets": [ { "name": "Barre d'annonce", "blocks": [ { "type": "message" } ] } ],
+  "enabled_on": { "groups": ["header"] }
+}
+{% endschema %}

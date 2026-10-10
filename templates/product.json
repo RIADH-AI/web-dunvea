@@ -1,0 +1,246 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "show_breadcrumbs": true,
+        "sticky_bar": true,
+        "padding_top": 16,
+        "padding_bottom": 64
+      },
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "show_empty": true
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {
+            "badge_1": "Fait main",
+            "badge_2": "Bois massif"
+          }
+        },
+        "bullets": {
+          "type": "bullets",
+          "settings": {
+            "bullet_1": "Bois massif — chaque pièce est unique",
+            "bullet_2": "Fixation invisible incluse",
+            "bullet_3": "Fabriqué main dans notre atelier",
+            "bullet_4": "Livraison offerte en France métropolitaine"
+          }
+        },
+        "dimensions": {
+          "type": "dimensions",
+          "settings": {
+            "label": "Dimensions"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_savings": true,
+            "tax_note": "TVA incluse · Livraison offerte en France métropolitaine"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "swatch_colors": "Frêne: #D9B98C\nFrêne massif: #D9B98C\nAcajou: #6E3B2B"
+          }
+        },
+        "quantity": {
+          "type": "quantity",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "lead_time": "Fabriqué et expédié sous [X] jours ouvrés"
+          }
+        },
+        "reassurance": {
+          "type": "reassurance",
+          "settings": {
+            "icon_1": "truck",
+            "title_1": "Livraison offerte",
+            "text_1": "France métropolitaine",
+            "icon_2": "return",
+            "title_2": "Retours 14 jours",
+            "text_2": "Dans l'emballage d'origine",
+            "icon_3": "wood",
+            "title_3": "Bois massif véritable",
+            "text_3": "Ni placage, ni MDF",
+            "icon_4": "hand",
+            "title_4": "Fabriqué main",
+            "text_4": "Dans notre atelier"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "rating",
+        "badges",
+        "bullets",
+        "dimensions",
+        "price",
+        "variant_picker",
+        "quantity",
+        "buy_buttons",
+        "reassurance"
+      ]
+    },
+    "story": {
+      "type": "product-story",
+      "settings": {
+        "anchor": "description",
+        "eyebrow": "Description",
+        "background": "beige",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "care": {
+      "type": "product-info-list",
+      "settings": {
+        "anchor": "entretien",
+        "eyebrow": "Entretien",
+        "heading": "Le bois massif ne demande presque rien",
+        "intro": "<p>Quelques gestes simples suffisent à le garder beau pendant des années.</p>",
+        "note": "<p>Le frêne vieillit en beauté. Son grain se patine naturellement — c'est un signe de qualité, pas un défaut.</p>",
+        "background": "beige",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "care-1": {
+          "type": "item",
+          "settings": {
+            "icon": "leaf",
+            "title": "Dépoussiérer",
+            "text": "Un chiffon doux et sec suffit."
+          }
+        },
+        "care-2": {
+          "type": "item",
+          "settings": {
+            "icon": "close",
+            "title": "Éviter l'eau stagnante",
+            "text": "Essuyez rapidement une trace d'eau ou un verre posé sur le bois."
+          }
+        },
+        "care-3": {
+          "type": "item",
+          "settings": {
+            "icon": "wood",
+            "title": "Nourrir le bois (optionnel)",
+            "text": "Une huile naturelle — lin ou tung — une à deux fois par an, si vous voulez raviver le grain."
+          }
+        },
+        "care-4": {
+          "type": "item",
+          "settings": {
+            "icon": "check",
+            "title": "Le miroir",
+            "text": "Il se nettoie avec un spray vitres classique, appliqué sur le chiffon plutôt que sur le verre."
+          }
+        }
+      },
+      "block_order": [
+        "care-1",
+        "care-2",
+        "care-3",
+        "care-4"
+      ]
+    },
+    "shipping": {
+      "type": "product-info-list",
+      "settings": {
+        "anchor": "livraison",
+        "eyebrow": "Livraison et retours",
+        "heading": "Expédié avec soin, chez vous",
+        "background": "blanc",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "ship-1": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Livraison offerte",
+            "text": "En France métropolitaine, sans minimum d'achat."
+          }
+        },
+        "ship-2": {
+          "type": "item",
+          "settings": {
+            "icon": "clock",
+            "title": "Délai",
+            "text": "Fabrication artisanale + expédition : [X] jours ouvrés."
+          }
+        },
+        "ship-3": {
+          "type": "item",
+          "settings": {
+            "icon": "box",
+            "title": "Emballage renforcé",
+            "text": "Spécialement conçu pour protéger le bois massif pendant le transport."
+          }
+        },
+        "ship-4": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "title": "Retours sous 14 jours",
+            "text": "Le produit doit être renvoyé dans son emballage d'origine."
+          }
+        }
+      },
+      "block_order": [
+        "ship-1",
+        "ship-2",
+        "ship-3",
+        "ship-4"
+      ]
+    },
+    "reviews": {
+      "type": "product-reviews",
+      "settings": {
+        "eyebrow": "Avis clients",
+        "heading": "Ils ont choisi DUNVEA",
+        "empty_title": "Soyez le premier à donner votre avis",
+        "empty_text": "<p>Vous avez installé une pièce DUNVEA chez vous ? Racontez-nous comment elle a trouvé sa place.</p>",
+        "hide_when_empty": false,
+        "background": "beige",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Vous aimerez aussi",
+        "products_to_show": 3,
+        "intent": "related",
+        "background": "blanc",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    }
+  },
+  "order": [
+    "main",
+    "story",
+    "care",
+    "shipping",
+    "reviews",
+    "recommendations"
+  ]
+}

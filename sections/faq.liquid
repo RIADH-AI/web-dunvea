@@ -1,0 +1,85 @@
+{%- comment -%}
+  FAQ — accordéons groupés par thème + JSON-LD FAQPage.
+  Blocs « Thème » (titre de groupe) puis « Question » ; une question appartient au dernier thème qui la précède.
+{%- endcomment -%}
+<section class="section-spacing bg-{{ section.settings.background }}" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <header class="section-header section-header--center">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <{{ section.settings.heading_tag }} class="h1">{{ section.settings.heading }}</{{ section.settings.heading_tag }}>
+        {%- if section.settings.text != blank -%}<div class="rte section-header__intro">{{ section.settings.text }}</div>{%- endif -%}
+      </header>
+    {%- endif -%}
+
+    <div class="faq">
+      {%- assign first_block = section.blocks.first -%}
+      {%- if first_block != blank and first_block.type != 'group' -%}
+        <div class="faq__group">
+          {%- for q in section.blocks -%}
+            {%- if q.type == 'group' -%}{%- break -%}{%- endif -%}
+            {%- render 'faq-item', block: q -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'group' -%}
+          <div class="faq__group" {{ block.shopify_attributes }}>
+            <h2 class="faq__group-title">{{ block.settings.title }}</h2>
+            {%- for q in section.blocks offset: forloop.index -%}
+              {%- if q.type == 'group' -%}{%- break -%}{%- endif -%}
+              {%- render 'faq-item', block: q -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- assign questions = section.blocks | where: 'type', 'question' -%}
+{%- if questions.size > 0 -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {%- for block in questions -%}
+          {
+            "@type": "Question",
+            "name": {{ block.settings.question | json }},
+            "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | strip_html | json }} }
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "div",
+  "blocks": [
+    { "type": "group", "name": "Thème", "settings": [ { "type": "text", "id": "title", "label": "Titre", "default": "Livraison" } ] },
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Combien coûte la livraison ?" },
+        { "type": "richtext", "id": "answer", "label": "Réponse", "default": "<p>La livraison est offerte en France métropolitaine.</p>" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Questions fréquentes" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Vos questions, nos réponses" },
+    { "type": "select", "id": "heading_tag", "label": "Balise du titre", "default": "h1", "options": [ { "value": "h1", "label": "H1" }, { "value": "h2", "label": "H2" } ] },
+    { "type": "richtext", "id": "text", "label": "Introduction" },
+    { "type": "select", "id": "background", "label": "Fond", "default": "beige", "options": [ { "value": "beige", "label": "Beige" }, { "value": "blanc", "label": "Blanc" } ] },
+    { "type": "range", "id": "padding_top", "label": "Marge haute", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "label": "Marge basse", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 112 }
+  ],
+  "presets": [ { "name": "FAQ", "blocks": [ { "type": "group" }, { "type": "question" } ] } ]
+}
+{% endschema %}

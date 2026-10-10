@@ -1,0 +1,60 @@
+{%- comment -%} Produit mis en avant (le Duo sur la page d'accueil). {%- endcomment -%}
+{%- assign fp = section.settings.product -%}
+<section class="section-spacing bg-{{ section.settings.background }}" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    <div class="featured{% if section.settings.reverse %} featured--reverse{% endif %} reveal">
+      <a href="{{ fp.url | default: '#' }}" class="featured__media ratio ratio--{{ section.settings.ratio }}" tabindex="-1" aria-hidden="true">
+        {%- assign fp_image = section.settings.image | default: fp.featured_media -%}
+        {%- if fp_image != blank -%}
+          {{ fp_image | image_url: width: 1800 | image_tag: loading: 'lazy', widths: '500, 800, 1100, 1400, 1800', sizes: '(min-width: 990px) 55vw, 100vw', alt: '' }}
+        {%- else -%}
+          {{ 'product-2' | placeholder_svg_tag: 'placeholder' }}
+        {%- endif -%}
+      </a>
+      <div class="featured__content">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h2 class="featured__title">{{ section.settings.heading | default: fp.title | default: 'Duo Étagère + Miroir' }}</h2>
+        {%- if fp != blank -%}
+          {%- assign reviews_link = fp.url | append: '#avis' -%}
+          {%- render 'star-rating', product: fp, link: reviews_link -%}
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}<div class="featured__text rte">{{ section.settings.text }}</div>{%- endif -%}
+        {%- if section.blocks.size > 0 -%}
+          <ul class="featured__includes">
+            {%- for block in section.blocks -%}
+              <li {{ block.shopify_attributes }}>{% render 'icon', icon: 'check', size: 16 %}<span>{{ block.settings.text }}</span></li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+        {%- if fp != blank -%}
+          {%- render 'price', product: fp, variant: fp.selected_or_first_available_variant, size: 'large', show_savings: true -%}
+        {%- endif -%}
+        <a href="{{ fp.url | default: '#' }}" class="button button--large">{{ section.settings.button_label }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Produit mis en avant",
+  "tag": "div",
+  "blocks": [
+    { "type": "include", "name": "Point clé", "settings": [ { "type": "text", "id": "text", "label": "Texte", "default": "Fixation invisible incluse" } ] }
+  ],
+  "settings": [
+    { "type": "product", "id": "product", "label": "Produit" },
+    { "type": "image_picker", "id": "image", "label": "Image (sinon image du produit)" },
+    { "type": "select", "id": "ratio", "label": "Format de l'image", "default": "portrait", "options": [ { "value": "portrait", "label": "Portrait" }, { "value": "square", "label": "Carré" }, { "value": "landscape", "label": "Paysage" } ] },
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Notre duo signature" },
+    { "type": "text", "id": "heading", "label": "Titre (sinon titre du produit)" },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "text", "id": "button_label", "label": "Bouton", "default": "Découvrir le duo" },
+    { "type": "checkbox", "id": "reverse", "label": "Image à droite", "default": false },
+    { "type": "select", "id": "background", "label": "Fond", "default": "blanc", "options": [ { "value": "beige", "label": "Beige" }, { "value": "blanc", "label": "Blanc" } ] },
+    { "type": "range", "id": "padding_top", "label": "Marge haute", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_bottom", "label": "Marge basse", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 112 }
+  ],
+  "presets": [ { "name": "Produit mis en avant" } ]
+}
+{% endschema %}

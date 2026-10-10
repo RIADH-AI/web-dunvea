@@ -1,0 +1,87 @@
+<footer class="footer">
+  <div class="page-width">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="{{ routes.root_url }}" class="logo-text">{{ settings.logo_text | default: shop.name }}</a>
+        {%- if section.settings.tagline != blank -%}
+          <div class="footer__tagline">{{ section.settings.tagline }}</div>
+        {%- endif -%}
+        <ul class="footer__social" role="list">
+          {%- if settings.social_instagram_link != blank -%}<li><a href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener" aria-label="Instagram">{% render 'icon', icon: 'instagram', size: 18 %}</a></li>{%- endif -%}
+          {%- if settings.social_pinterest_link != blank -%}<li><a href="{{ settings.social_pinterest_link }}" target="_blank" rel="noopener" aria-label="Pinterest">{% render 'icon', icon: 'pinterest', size: 18 %}</a></li>{%- endif -%}
+          {%- if settings.social_tiktok_link != blank -%}<li><a href="{{ settings.social_tiktok_link }}" target="_blank" rel="noopener" aria-label="TikTok">{% render 'icon', icon: 'tiktok', size: 18 %}</a></li>{%- endif -%}
+          {%- if settings.social_facebook_link != blank -%}<li><a href="{{ settings.social_facebook_link }}" target="_blank" rel="noopener" aria-label="Facebook">{% render 'icon', icon: 'facebook', size: 18 %}</a></li>{%- endif -%}
+        </ul>
+      </div>
+
+      {%- for menu_id in (1..2) -%}
+        {%- liquid
+          assign menu_key = 'menu_' | append: menu_id
+          assign title_key = 'menu_title_' | append: menu_id
+          assign footer_menu = section.settings[menu_key]
+        -%}
+        {%- if footer_menu != blank and footer_menu.links.size > 0 -%}
+          <nav aria-label="{{ section.settings[title_key] | default: footer_menu.title | escape }}">
+            <p class="footer__title">{{ section.settings[title_key] | default: footer_menu.title }}</p>
+            <ul class="footer__links" role="list">
+              {%- for link in footer_menu.links -%}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </nav>
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if section.settings.show_newsletter -%}
+        <div class="footer__newsletter">
+          <p class="footer__title">{{ section.settings.newsletter_title }}</p>
+          {%- if section.settings.newsletter_text != blank -%}<p>{{ section.settings.newsletter_text }}</p>{%- endif -%}
+          {%- form 'customer', id: 'FooterNewsletter', class: 'footer__newsletter-form' -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            {%- if form.posted_successfully? -%}
+              <p class="form-message" role="status">{{ 'newsletter.success' | t }}</p>
+            {%- else -%}
+              {%- if form.errors -%}<p class="form-message form-message--error" role="alert">{{ form.errors | default_errors }}</p>{%- endif -%}
+              <div class="newsletter-form">
+                <label for="FooterNewsletterEmail" class="visually-hidden">{{ 'newsletter.label' | t }}</label>
+                <input id="FooterNewsletterEmail" type="email" name="contact[email]" placeholder="{{ 'newsletter.label' | t }}" autocomplete="email" required>
+                <button type="submit" aria-label="{{ 'newsletter.button' | t }}">{% render 'icon', icon: 'arrow-right', size: 20 %}</button>
+              </div>
+            {%- endif -%}
+          {%- endform -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ settings.logo_text | default: shop.name }} · {{ section.settings.copyright }}</p>
+      {%- if section.settings.show_payment_icons and shop.enabled_payment_types.size > 0 -%}
+        <ul class="footer__payments" role="list" aria-label="{{ 'general.payment_methods' | t }}">
+          {%- for type in shop.enabled_payment_types -%}
+            <li>{{ type | payment_type_svg_tag }}</li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Pied de page",
+  "tag": "div",
+  "settings": [
+    { "type": "richtext", "id": "tagline", "label": "Texte de marque", "default": "<p>Étagères flottantes et miroirs organiques en bois massif, faits main dans notre atelier.</p>" },
+    { "type": "link_list", "id": "menu_1", "label": "Menu 1", "default": "footer" },
+    { "type": "text", "id": "menu_title_1", "label": "Titre menu 1", "default": "Boutique" },
+    { "type": "link_list", "id": "menu_2", "label": "Menu 2" },
+    { "type": "text", "id": "menu_title_2", "label": "Titre menu 2", "default": "Aide" },
+    { "type": "checkbox", "id": "show_newsletter", "label": "Inscription newsletter", "default": true },
+    { "type": "text", "id": "newsletter_title", "label": "Titre newsletter", "default": "Des nouvelles de l'atelier" },
+    { "type": "text", "id": "newsletter_text", "label": "Texte newsletter", "default": "Nouvelles pièces, coulisses de fabrication. Un e-mail par mois, pas plus." },
+    { "type": "text", "id": "copyright", "label": "Mention", "default": "Bois massif, fait main" },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Icônes de paiement", "default": true }
+  ],
+  "enabled_on": { "groups": ["footer"] }
+}
+{% endschema %}

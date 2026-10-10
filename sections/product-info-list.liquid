@@ -1,0 +1,66 @@
+{%- comment -%} Liste d'informations avec icônes — utilisée pour « Entretien » et « Livraison et retours ». {%- endcomment -%}
+<section id="{{ section.settings.anchor }}" class="info-list section-spacing bg-{{ section.settings.background }}" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width page-width--narrow">
+    <div class="info-list__layout">
+      <header class="section-header info-list__header">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h2 class="h2">{{ section.settings.heading }}</h2>
+        {%- if section.settings.intro != blank -%}<div class="rte section-header__intro">{{ section.settings.intro }}</div>{%- endif -%}
+      </header>
+
+      <div class="info-list__body">
+        <ul class="info-list__items" role="list">
+          {%- for block in section.blocks -%}
+            <li class="info-list__item" {{ block.shopify_attributes }}>
+              <span class="info-list__icon">{% render 'icon', icon: block.settings.icon, size: 22 %}</span>
+              <div>
+                {%- if block.settings.title != blank -%}<p class="info-list__title">{{ block.settings.title }}</p>{%- endif -%}
+                {%- if block.settings.text != blank -%}<p class="info-list__text">{{ block.settings.text }}</p>{%- endif -%}
+              </div>
+            </li>
+          {%- endfor -%}
+        </ul>
+        {%- if section.settings.note != blank -%}
+          <div class="info-list__note rte">{{ section.settings.note }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Liste avec icônes",
+  "tag": "div",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Élément",
+      "settings": [
+        {
+          "type": "select", "id": "icon", "label": "Icône", "default": "check",
+          "options": [
+            { "value": "check", "label": "Coche" }, { "value": "truck", "label": "Camion" }, { "value": "return", "label": "Retour" },
+            { "value": "box", "label": "Colis" }, { "value": "clock", "label": "Horloge" }, { "value": "wood", "label": "Bois" },
+            { "value": "leaf", "label": "Feuille" }, { "value": "hand", "label": "Main" }, { "value": "shield", "label": "Bouclier" },
+            { "value": "drill", "label": "Perceuse" }, { "value": "ruler", "label": "Règle" }, { "value": "close", "label": "Croix" }
+          ]
+        },
+        { "type": "text", "id": "title", "label": "Titre" },
+        { "type": "textarea", "id": "text", "label": "Texte" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "anchor", "label": "Ancre (id)", "default": "infos" },
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Entretien du bois" },
+    { "type": "richtext", "id": "intro", "label": "Introduction" },
+    { "type": "richtext", "id": "note", "label": "Mention finale" },
+    { "type": "select", "id": "background", "label": "Fond", "default": "beige", "options": [ { "value": "beige", "label": "Beige" }, { "value": "blanc", "label": "Blanc" } ] },
+    { "type": "range", "id": "padding_top", "label": "Marge haute", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "label": "Marge basse", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 }
+  ],
+  "presets": [ { "name": "Liste avec icônes", "blocks": [ { "type": "item" }, { "type": "item" }, { "type": "item" } ] } ]
+}
+{% endschema %}

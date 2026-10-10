@@ -1,0 +1,60 @@
+{%- comment -%}
+  « Ils ont choisi DUNVEA » — avis clients.
+  Ajoutez le bloc d'application Judge.me (« Review Widget ») dans cette section via l'éditeur.
+  Sans bloc d'application, affiche un état vide « Soyez le premier à donner votre avis ».
+{%- endcomment -%}
+{%- liquid
+  assign has_app_block = false
+  for block in section.blocks
+    if block.type == '@app'
+      assign has_app_block = true
+    endif
+  endfor
+  assign rating_count = product.metafields.reviews.rating_count.value | default: 0
+-%}
+{%- unless section.settings.hide_when_empty and rating_count == 0 and has_app_block == false -%}
+<section id="avis" class="reviews section-spacing bg-{{ section.settings.background }}" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    <header class="section-header section-header--center">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="h2">{{ section.settings.heading }}</h2>
+      {%- if product != blank -%}
+        {%- render 'star-rating', product: product -%}
+      {%- endif -%}
+    </header>
+
+    {%- if has_app_block -%}
+      <div class="reviews__widget">
+        {%- for block in section.blocks -%}
+          {%- if block.type == '@app' -%}{% render block %}{%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="reviews__empty">
+        <div class="reviews__empty-stars" aria-hidden="true">{% for i in (1..5) %}{% render 'icon', icon: 'star', size: 20 %}{% endfor %}</div>
+        <p class="reviews__empty-title">{{ section.settings.empty_title }}</p>
+        {%- if section.settings.empty_text != blank -%}<div class="rte reviews__empty-text">{{ section.settings.empty_text }}</div>{%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+{%- endunless -%}
+
+{% schema %}
+{
+  "name": "Avis clients",
+  "tag": "div",
+  "blocks": [ { "type": "@app" } ],
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Avis clients" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Ils ont choisi DUNVEA" },
+    { "type": "text", "id": "empty_title", "label": "Titre sans avis", "default": "Soyez le premier à donner votre avis" },
+    { "type": "richtext", "id": "empty_text", "label": "Texte sans avis", "default": "<p>Vous avez installé une pièce DUNVEA chez vous ? Racontez-nous comment elle a trouvé sa place.</p>" },
+    { "type": "checkbox", "id": "hide_when_empty", "label": "Masquer la section tant qu'il n'y a aucun avis", "info": "S'applique uniquement sans bloc Judge.me.", "default": false },
+    { "type": "select", "id": "background", "label": "Fond", "default": "blanc", "options": [ { "value": "beige", "label": "Beige" }, { "value": "blanc", "label": "Blanc" } ] },
+    { "type": "range", "id": "padding_top", "label": "Marge haute", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "label": "Marge basse", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 }
+  ],
+  "presets": [ { "name": "Avis clients" } ]
+}
+{% endschema %}

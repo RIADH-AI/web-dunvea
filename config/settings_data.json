@@ -1,0 +1,27 @@
+{
+  "current": "Default",
+  "presets": {
+    "Default": {
+      "logo_text": "DUNVEA",
+      "logo_width": 120,
+      "color_text": "#2C2C2A",
+      "color_accent": "#9C6B3F",
+      "color_background": "#F2EEE6",
+      "color_surface": "#FFFFFF",
+      "color_button": "#2C2C2A",
+      "color_button_text": "#FFFFFF",
+      "color_sale": "#9C6B3F",
+      "type_heading_font": "montserrat_n6",
+      "type_body_font": "montserrat_n3",
+      "body_scale": 100,
+      "page_width": 1360,
+      "radius": 2,
+      "card_image_ratio": "portrait",
+      "card_show_secondary_image": true,
+      "card_show_rating": true,
+      "cart_shipping_note": "Livraison offerte en France métropolitaine.",
+      "schema_free_shipping": true,
+      "schema_return_days": 14
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<section class="newsletter-section section-spacing bg-{{ section.settings.background }}" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width page-width--text">
+    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    <h2 class="h2">{{ section.settings.heading }}</h2>
+    {%- if section.settings.text != blank -%}<div class="rte section-header__intro">{{ section.settings.text }}</div>{%- endif -%}
+    {%- form 'customer', id: 'NewsletterSection' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      {%- if form.posted_successfully? -%}
+        <p class="form-message" role="status">{{ 'newsletter.success' | t }}</p>
+      {%- else -%}
+        {%- if form.errors -%}<p class="form-message form-message--error" role="alert">{{ form.errors | default_errors }}</p>{%- endif -%}
+        <div class="newsletter-form">
+          <label for="NewsletterSectionEmail" class="visually-hidden">{{ 'newsletter.label' | t }}</label>
+          <input id="NewsletterSectionEmail" type="email" name="contact[email]" placeholder="{{ 'newsletter.label' | t }}" autocomplete="email" required>
+          <button type="submit" aria-label="{{ 'newsletter.button' | t }}">{% render 'icon', icon: 'arrow-right', size: 20 %}</button>
+        </div>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Newsletter" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "Des nouvelles de l'atelier" },
+    { "type": "richtext", "id": "text", "label": "Texte", "default": "<p>Nouvelles pièces, coulisses de fabrication, conseils d'aménagement. Un e-mail par mois, pas plus.</p>" },
+    { "type": "select", "id": "background", "label": "Fond", "default": "blanc", "options": [ { "value": "beige", "label": "Beige" }, { "value": "blanc", "label": "Blanc" } ] },
+    { "type": "range", "id": "padding_top", "label": "Marge haute", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "label": "Marge basse", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 }
+  ],
+  "presets": [ { "name": "Newsletter" } ]
+}
+{% endschema %}

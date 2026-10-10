@@ -1,0 +1,71 @@
+{%- comment -%}
+  « Complétez votre mur » — cross-sell vers un produit choisi (Duo ou Pack).
+  Miroir / Étagère → Duo ; Duo → Pack.
+{%- endcomment -%}
+{%- liquid
+  assign target = section.settings.product
+  if target == blank or target.id == product.id
+    assign target = blank
+  endif
+-%}
+{%- if target != blank or request.design_mode -%}
+<section class="upsell section-spacing bg-{{ section.settings.background }}" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    <div class="upsell__card">
+      <a href="{{ target.url | default: '#' }}" class="upsell__media ratio ratio--landscape" tabindex="-1" aria-hidden="true">
+        {%- assign upsell_image = section.settings.image | default: target.featured_media -%}
+        {%- if upsell_image != blank -%}
+          {{ upsell_image | image_url: width: 1600 | image_tag: loading: 'lazy', widths: '500, 800, 1100, 1400, 1600', sizes: '(min-width: 990px) 55vw, 100vw', alt: '' }}
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder' }}
+        {%- endif -%}
+      </a>
+      <div class="upsell__content">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h2 class="h2">{{ section.settings.heading }}</h2>
+        {%- if section.settings.text != blank -%}<div class="rte">{{ section.settings.text }}</div>{%- endif -%}
+
+        {%- if target != blank -%}
+          <p class="upsell__product-title">{{ target.title }}</p>
+          {%- render 'price', product: target, variant: target.selected_or_first_available_variant, show_savings: true -%}
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="upsell__includes" role="list">
+            {%- for block in section.blocks -%}
+              <li {{ block.shopify_attributes }}>{% render 'icon', icon: 'check', size: 16 %}<span>{{ block.settings.text }}</span></li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        <a href="{{ target.url | default: '#' }}" class="button button--large">
+          {{- section.settings.button_label -}}
+          {%- render 'icon', icon: 'arrow-right', size: 18 -%}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Complétez votre mur",
+  "tag": "div",
+  "blocks": [
+    { "type": "include", "name": "Contenu inclus", "settings": [ { "type": "text", "id": "text", "label": "Texte", "default": "1 étagère flottante + 1 miroir organique" } ] }
+  ],
+  "settings": [
+    { "type": "product", "id": "product", "label": "Produit proposé" },
+    { "type": "image_picker", "id": "image", "label": "Image (sinon image du produit)" },
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre", "default": "Complétez votre mur" },
+    { "type": "text", "id": "heading", "label": "Titre", "default": "L'étagère et le miroir, ensemble" },
+    { "type": "richtext", "id": "text", "label": "Texte" },
+    { "type": "text", "id": "button_label", "label": "Libellé du bouton", "default": "Découvrir le duo" },
+    { "type": "select", "id": "background", "label": "Fond", "default": "beige", "options": [ { "value": "beige", "label": "Beige" }, { "value": "blanc", "label": "Blanc" } ] },
+    { "type": "range", "id": "padding_top", "label": "Marge haute", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 },
+    { "type": "range", "id": "padding_bottom", "label": "Marge basse", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 96 }
+  ],
+  "presets": [ { "name": "Complétez votre mur" } ]
+}
+{% endschema %}

@@ -1,0 +1,106 @@
+{%- liquid
+  assign menu = section.settings.menu
+  if settings.logo != blank
+    assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio | round
+  endif
+-%}
+<header class="header">
+  <div class="page-width header__inner">
+    {%- comment -%} Menu mobile {%- endcomment -%}
+    <details class="header__menu-toggle" data-drawer>
+      <summary class="icon-button" aria-label="{{ 'general.menu' | t }}">{% render 'icon', icon: 'menu', size: 24 %}</summary>
+      <div class="drawer" role="dialog" aria-modal="true" aria-label="{{ 'general.menu' | t }}">
+        <div class="drawer__overlay" data-drawer-close></div>
+        <div class="drawer__panel">
+          <div class="drawer__header">
+            <span class="logo-text">{{ settings.logo_text | default: shop.name }}</span>
+            <button type="button" class="icon-button" data-drawer-close aria-label="{{ 'accessibility.close' | t }}">{% render 'icon', icon: 'close', size: 22 %}</button>
+          </div>
+          <ul class="drawer__menu" role="list">
+            {%- for link in menu.links -%}
+              <li>
+                {%- if link.links != blank -%}
+                  <details>
+                    <summary>{{ link.title }}{% render 'icon', icon: 'chevron-down', size: 18 %}</summary>
+                    <ul class="drawer__submenu" role="list">
+                      {%- for child in link.links -%}
+                        <li><a href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>{{ child.title }}</a></li>
+                      {%- endfor -%}
+                    </ul>
+                  </details>
+                {%- else -%}
+                  <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}{% render 'icon', icon: 'chevron-right', size: 18 %}</a>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+          <div class="drawer__footer">
+            {%- if shop.customer_accounts_enabled -%}
+              <a href="{{ routes.account_url }}">{% render 'icon', icon: 'account', size: 20 %}{{ 'customer.account.title' | t }}</a>
+            {%- endif -%}
+            <a href="{{ routes.search_url }}">{% render 'icon', icon: 'search', size: 20 %}{{ 'general.search.title' | t }}</a>
+            {%- if section.settings.drawer_note != blank -%}<p>{{ section.settings.drawer_note }}</p>{%- endif -%}
+          </div>
+        </div>
+      </div>
+    </details>
+
+    {%- comment -%} Logo {%- endcomment -%}
+    <div class="header__logo">
+      <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+        {%- if settings.logo != blank -%}
+          {{ settings.logo | image_url: width: 600 | image_tag: width: settings.logo_width, height: logo_height, alt: shop.name, loading: 'eager' }}
+        {%- else -%}
+          <span class="logo-text">{{ settings.logo_text | default: shop.name }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+
+    {%- comment -%} Navigation desktop {%- endcomment -%}
+    <nav class="header__nav" aria-label="{{ 'general.menu' | t }}">
+      <ul class="menu" role="list">
+        {%- for link in menu.links -%}
+          <li class="menu__item">
+            {%- if link.links != blank -%}
+              <details>
+                <summary class="menu__link">{{ link.title }}</summary>
+                <ul class="menu__dropdown" role="list">
+                  {%- for child in link.links -%}
+                    <li><a href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>{{ child.title }}</a></li>
+                  {%- endfor -%}
+                </ul>
+              </details>
+            {%- else -%}
+              <a href="{{ link.url }}" class="menu__link"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    {%- comment -%} Icônes {%- endcomment -%}
+    <div class="header__icons">
+      <a href="{{ routes.search_url }}" class="icon-button header__icon header__icon--account" aria-label="{{ 'general.search.title' | t }}">{% render 'icon', icon: 'search', size: 22 %}</a>
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="icon-button header__icon header__icon--account" aria-label="{{ 'customer.account.title' | t }}">{% render 'icon', icon: 'account', size: 22 %}</a>
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" class="icon-button header__icon" aria-label="{{ 'cart.title' | t }}">
+        {%- render 'icon', icon: 'cart', size: 24 -%}
+        <span class="cart-count" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "En-tête",
+  "tag": "div",
+  "class": "section-header-wrapper",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
+    { "type": "text", "id": "drawer_note", "label": "Note du menu mobile", "default": "Livraison offerte en France métropolitaine · Retours 14 jours" }
+  ],
+  "enabled_on": { "groups": ["header"] }
+}
+{% endschema %}

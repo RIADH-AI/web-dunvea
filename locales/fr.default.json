@@ -1,0 +1,205 @@
+{
+  "general": {
+    "announcement": "Annonce",
+    "menu": "Menu",
+    "payment_methods": "Moyens de paiement",
+    "placeholder_product": "Produit",
+    "breadcrumbs": {
+      "label": "Fil d'Ariane",
+      "home": "Accueil"
+    },
+    "meta": {
+      "tags": "Mots-clés « {{ tags }} »",
+      "page": "Page {{ page }}"
+    },
+    "pagination": {
+      "label": "Pagination"
+    },
+    "search": {
+      "title": "Recherche",
+      "placeholder": "Rechercher une pièce",
+      "submit": "Rechercher",
+      "results": {
+        "one": "{{ count }} résultat pour « {{ terms }} »",
+        "other": "{{ count }} résultats pour « {{ terms }} »"
+      }
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Aller au contenu",
+    "close": "Fermer"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Ajouter au panier",
+      "sold_out": "Épuisé",
+      "unavailable": "Indisponible",
+      "variant": "Variante",
+      "quantity": "Quantité",
+      "quantity_decrease": "Diminuer la quantité",
+      "quantity_increase": "Augmenter la quantité",
+      "you_save": "Économisez {{ amount }}",
+      "you_save_js": "Économisez [amount]",
+      "badge_bundle": "Prix lot",
+      "share_pinterest": "Épingler sur Pinterest",
+      "price": {
+        "regular": "Prix",
+        "compare_at": "Prix initial",
+        "from": "À partir de"
+      }
+    },
+    "gallery": {
+      "label": "Galerie d'images du produit",
+      "zoom": "Agrandir l'image",
+      "previous": "Image précédente",
+      "next": "Image suivante",
+      "thumbnail": "Afficher l'image {{ index }}",
+      "lightbox": "Images en grand format"
+    },
+    "rating": {
+      "stars_label": "Note de {{ rating }} sur {{ max }}",
+      "be_first": "Soyez le premier à donner votre avis",
+      "count": {
+        "one": "{{ count }} avis",
+        "other": "{{ count }} avis"
+      }
+    }
+  },
+  "collections": {
+    "sort_by": "Trier par",
+    "empty": "Aucune pièce dans cette collection pour le moment.",
+    "count": {
+      "one": "{{ count }} pièce",
+      "other": "{{ count }} pièces"
+    }
+  },
+  "cart": {
+    "title": "Panier",
+    "empty": "Votre panier est vide.",
+    "continue": "Découvrir la collection",
+    "checkout": "Commander",
+    "remove": "Retirer",
+    "update": "Mettre à jour",
+    "subtotal": "Sous-total",
+    "shipping": "Livraison",
+    "shipping_free": "Offerte",
+    "total": "Total",
+    "note": "Une précision pour l'atelier ?",
+    "secure": "Paiement sécurisé",
+    "returns": "Retours 14 jours",
+    "error": "Une erreur est survenue. Merci de réessayer.",
+    "notification": {
+      "added": "Ajouté au panier",
+      "view_cart": "Voir le panier",
+      "continue": "Continuer mes achats"
+    }
+  },
+  "newsletter": {
+    "label": "Votre adresse e-mail",
+    "button": "S'inscrire",
+    "success": "Merci, vous êtes inscrit."
+  },
+  "contact": {
+    "name": "Nom",
+    "email": "E-mail",
+    "phone": "Téléphone",
+    "order": "N° de commande",
+    "subject": "Sujet",
+    "message": "Message",
+    "send": "Envoyer",
+    "success": "Merci pour votre message. Nous vous répondons au plus vite.",
+    "subjects": {
+      "product": "Une question sur une pièce",
+      "order": "Ma commande",
+      "return": "Un retour",
+      "pro": "Projet professionnel",
+      "other": "Autre"
+    }
+  },
+  "password": {
+    "enter": "Accès réservé",
+    "label": "Mot de passe",
+    "submit": "Entrer"
+  },
+  "templates": {
+    "404": {
+      "title": "Cette page n'existe pas",
+      "text": "Elle a peut-être été déplacée. Les pièces de l'atelier, elles, sont toujours là."
+    }
+  },
+  "customer": {
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "password_confirm": "Confirmer le mot de passe",
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "logout": "Se déconnecter",
+    "account": {
+      "title": "Mon compte"
+    },
+    "login": {
+      "title": "Connexion",
+      "submit": "Se connecter",
+      "forgot": "Mot de passe oublié ?",
+      "guest": "Continuer en tant qu'invité"
+    },
+    "recover": {
+      "title": "Réinitialiser mon mot de passe",
+      "submit": "Envoyer le lien",
+      "success": "Un e-mail vient de vous être envoyé."
+    },
+    "register": {
+      "title": "Créer un compte",
+      "submit": "Créer mon compte"
+    },
+    "activate": {
+      "title": "Activer mon compte",
+      "submit": "Activer",
+      "decline": "Refuser l'invitation"
+    },
+    "reset": {
+      "title": "Nouveau mot de passe",
+      "submit": "Enregistrer"
+    },
+    "orders": {
+      "title": "Mes commandes",
+      "none": "Vous n'avez pas encore passé de commande.",
+      "order": "Commande",
+      "date": "Date",
+      "status": "Statut",
+      "total": "Total"
+    },
+    "order": {
+      "title": "Commande {{ name }}",
+      "product": "Produit",
+      "quantity": "Quantité",
+      "shipping_address": "Adresse de livraison"
+    },
+    "addresses": {
+      "title": "Mes adresses",
+      "view": {
+        "one": "Voir mon adresse ({{ count }})",
+        "other": "Voir mes adresses ({{ count }})"
+      },
+      "default": "Adresse par défaut",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "delete_confirm": "Supprimer cette adresse ?",
+      "add": "Ajouter une adresse",
+      "save": "Enregistrer l'adresse",
+      "address1": "Adresse",
+      "address2": "Complément d'adresse",
+      "zip": "Code postal",
+      "city": "Ville",
+      "country": "Pays",
+      "set_default": "Définir comme adresse par défaut"
+    }
+  },
+  "gift_cards": {
+    "title": "Votre carte cadeau",
+    "code": "Code",
+    "balance": "Solde : {{ balance }}",
+    "use": "Utiliser en boutique",
+    "print": "Imprimer"
+  }
+}

@@ -1,0 +1,212 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Dunvea",
+    "theme_version": "1.0.0",
+    "theme_author": "DUNVEA",
+    "theme_documentation_url": "https://dunvea.com",
+    "theme_support_url": "https://dunvea.com/pages/contact"
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "text",
+        "id": "logo_text",
+        "label": "Logo texte",
+        "default": "DUNVEA"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image (optionnel)",
+        "info": "Remplace le logo texte si renseigné."
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 60,
+        "max": 260,
+        "step": 5,
+        "unit": "px",
+        "label": "Largeur du logo image",
+        "default": 120
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "32 × 32 px recommandé."
+      }
+    ]
+  },
+  {
+    "name": "Couleurs",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Charbon — texte principal",
+        "default": "#2C2C2A"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Terre — accent bois",
+        "default": "#9C6B3F"
+      },
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Beige — fond",
+        "default": "#F2EEE6"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Blanc — sections claires",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_button",
+        "label": "Bouton principal",
+        "default": "#2C2C2A"
+      },
+      {
+        "type": "color",
+        "id": "color_button_text",
+        "label": "Texte du bouton principal",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_sale",
+        "label": "Économie / prix barré",
+        "default": "#9C6B3F"
+      }
+    ]
+  },
+  {
+    "name": "Typographie",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_heading_font",
+        "label": "Police des titres",
+        "default": "montserrat_n6"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Police du texte",
+        "default": "montserrat_n3"
+      },
+      {
+        "type": "range",
+        "id": "body_scale",
+        "min": 90,
+        "max": 120,
+        "step": 5,
+        "unit": "%",
+        "label": "Taille du texte",
+        "default": 100
+      }
+    ]
+  },
+  {
+    "name": "Mise en page",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "min": 1100,
+        "max": 1600,
+        "step": 20,
+        "unit": "px",
+        "label": "Largeur maximale de la page",
+        "default": 1360
+      },
+      {
+        "type": "range",
+        "id": "radius",
+        "min": 0,
+        "max": 12,
+        "step": 1,
+        "unit": "px",
+        "label": "Arrondi des angles",
+        "default": 2
+      }
+    ]
+  },
+  {
+    "name": "Produits",
+    "settings": [
+      {
+        "type": "select",
+        "id": "card_image_ratio",
+        "label": "Format des images produit (cartes)",
+        "options": [
+          { "value": "portrait", "label": "Portrait 4:5" },
+          { "value": "square", "label": "Carré" },
+          { "value": "landscape", "label": "Paysage 4:3" }
+        ],
+        "default": "portrait"
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_secondary_image",
+        "label": "Afficher la 2e image au survol",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "card_show_rating",
+        "label": "Afficher la note sur les cartes",
+        "info": "Utilise les métachamps d'avis standards (Judge.me les synchronise).",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Panier",
+    "settings": [
+      {
+        "type": "text",
+        "id": "cart_shipping_note",
+        "label": "Message livraison dans le panier",
+        "default": "Livraison offerte en France métropolitaine."
+      }
+    ]
+  },
+  {
+    "name": "Réseaux sociaux",
+    "settings": [
+      { "type": "text", "id": "social_instagram_link", "label": "Instagram", "info": "https://instagram.com/dunvea" },
+      { "type": "text", "id": "social_pinterest_link", "label": "Pinterest" },
+      { "type": "text", "id": "social_tiktok_link", "label": "TikTok" },
+      { "type": "text", "id": "social_facebook_link", "label": "Facebook" }
+    ]
+  },
+  {
+    "name": "Données structurées",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "schema_free_shipping",
+        "label": "Déclarer la livraison offerte (France) dans le JSON-LD",
+        "default": true
+      },
+      {
+        "type": "range",
+        "id": "schema_return_days",
+        "min": 0,
+        "max": 60,
+        "step": 1,
+        "unit": "j",
+        "label": "Délai de retour déclaré",
+        "default": 14
+      }
+    ]
+  }
+]

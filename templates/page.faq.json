@@ -1,0 +1,210 @@
+{
+  "sections": {
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "Questions fréquentes",
+        "heading": "Vos questions, nos réponses",
+        "heading_tag": "h1",
+        "text": "<p>Livraison, installation, entretien du bois : l'essentiel est ici. Pour le reste, écrivez-nous.</p>",
+        "background": "beige",
+        "padding_top": 80,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "g-livraison": {
+          "type": "group",
+          "settings": {
+            "title": "Livraison"
+          }
+        },
+        "q-livraison-prix": {
+          "type": "question",
+          "settings": {
+            "question": "Combien coûte la livraison ?",
+            "answer": "<p>La livraison est offerte en France métropolitaine, sans minimum d'achat.</p>"
+          }
+        },
+        "q-livraison-delai": {
+          "type": "question",
+          "settings": {
+            "question": "Quel est le délai de livraison ?",
+            "answer": "<p>Chaque pièce est fabriquée à la main. Comptez [X] jours ouvrés entre votre commande et la livraison, fabrication et expédition comprises. Vous recevez un e-mail de suivi dès l'envoi du colis.</p>"
+          }
+        },
+        "q-livraison-zone": {
+          "type": "question",
+          "settings": {
+            "question": "Livrez-vous en dehors de la France métropolitaine ?",
+            "answer": "<p>La livraison offerte concerne la France métropolitaine. Pour la Corse, l'outre-mer ou l'étranger, écrivez-nous avant de commander : nous vous indiquerons les possibilités.</p>"
+          }
+        },
+        "q-livraison-emballage": {
+          "type": "question",
+          "settings": {
+            "question": "Comment les pièces sont-elles emballées ?",
+            "answer": "<p>Dans un emballage renforcé, spécialement conçu pour protéger le bois massif et le verre du miroir pendant le transport.</p>"
+          }
+        },
+        "g-retours": {
+          "type": "group",
+          "settings": {
+            "title": "Retours"
+          }
+        },
+        "q-retours-delai": {
+          "type": "question",
+          "settings": {
+            "question": "Puis-je retourner un produit ?",
+            "answer": "<p>Oui. Les retours sont acceptés sous 14 jours après réception, à condition que le produit soit renvoyé dans son emballage d'origine.</p>"
+          }
+        },
+        "q-retours-comment": {
+          "type": "question",
+          "settings": {
+            "question": "Comment faire un retour ?",
+            "answer": "<p>Écrivez-nous depuis la page <a href=\"/pages/contact\">Contact</a> en indiquant votre numéro de commande. Nous vous expliquons la marche à suivre.</p>"
+          }
+        },
+        "q-retours-abime": {
+          "type": "question",
+          "settings": {
+            "question": "Mon colis est arrivé abîmé, que faire ?",
+            "answer": "<p>Prenez quelques photos du colis et de la pièce, puis écrivez-nous rapidement avec votre numéro de commande. Nous trouverons une solution avec vous.</p>"
+          }
+        },
+        "g-installation": {
+          "type": "group",
+          "settings": {
+            "title": "Installation"
+          }
+        },
+        "q-install-materiel": {
+          "type": "question",
+          "settings": {
+            "question": "De quoi ai-je besoin pour installer une étagère ou un miroir ?",
+            "answer": "<p>D'une perceuse et d'un niveau à bulle. Tout le reste est fourni : vis, chevilles et gabarit de perçage pour l'étagère, rail dissimulé pour le miroir.</p>"
+          }
+        },
+        "q-install-temps": {
+          "type": "question",
+          "settings": {
+            "question": "Combien de temps faut-il ?",
+            "answer": "<p>Environ 10 minutes par pièce : positionner le gabarit, percer deux trous, visser les supports, accrocher.</p>"
+          }
+        },
+        "q-install-mur": {
+          "type": "question",
+          "settings": {
+            "question": "Est-ce compatible avec un mur en placo ?",
+            "answer": "<p>Oui. Le système de fixation fonctionne sur mur placo et sur béton.</p>"
+          }
+        },
+        "q-install-charge": {
+          "type": "question",
+          "settings": {
+            "question": "Quel poids l'étagère peut-elle supporter ?",
+            "answer": "<p>[à confirmer] kg, répartis sur la longueur de l'étagère.</p>"
+          }
+        },
+        "g-bois": {
+          "type": "group",
+          "settings": {
+            "title": "Le bois et son entretien"
+          }
+        },
+        "q-bois-massif": {
+          "type": "question",
+          "settings": {
+            "question": "S'agit-il vraiment de bois massif ?",
+            "answer": "<p>Oui. Chaque pièce est taillée dans un bloc unique : pas de placage, pas de MDF, pas d'aggloméré. Du bois massif de bout en bout.</p>"
+          }
+        },
+        "q-bois-choix": {
+          "type": "question",
+          "settings": {
+            "question": "Frêne ou acajou : lequel choisir ?",
+            "answer": "<p>Le frêne massif européen est clair, entre le blond et le miel, avec un grain fin — il s'accorde aussi bien à un intérieur scandinave qu'à un appartement haussmannien. L'acajou est sombre, brun-rouge, au grain profond : il apporte une présence plus chaleureuse et sophistiquée.</p>"
+          }
+        },
+        "q-bois-unique": {
+          "type": "question",
+          "settings": {
+            "question": "Ma pièce ressemblera-t-elle exactement à la photo ?",
+            "answer": "<p>Pas tout à fait, et c'est voulu. Le bois est naturel et chaque pièce est faite à la main : les veines, la nuance et le grain varient légèrement d'une pièce à l'autre.</p>"
+          }
+        },
+        "q-bois-entretien": {
+          "type": "question",
+          "settings": {
+            "question": "Comment entretenir le bois ?",
+            "answer": "<p>Un chiffon doux et sec pour dépoussiérer, pas d'eau stagnante sur le bois. Si vous le souhaitez, une huile naturelle (lin ou tung) une à deux fois par an pour nourrir le bois. Le miroir se nettoie avec un spray vitres classique.</p>"
+          }
+        },
+        "g-commande": {
+          "type": "group",
+          "settings": {
+            "title": "Commande et paiement"
+          }
+        },
+        "q-paiement": {
+          "type": "question",
+          "settings": {
+            "question": "Quels moyens de paiement acceptez-vous ?",
+            "answer": "<p>Les moyens de paiement disponibles s'affichent au moment de régler votre commande. Le paiement est entièrement sécurisé.</p>"
+          }
+        },
+        "q-modifier": {
+          "type": "question",
+          "settings": {
+            "question": "Puis-je modifier ma commande ?",
+            "answer": "<p>Écrivez-nous le plus vite possible depuis la page <a href=\"/pages/contact\">Contact</a>. Tant que la pièce n'est pas expédiée, nous faisons notre possible pour l'adapter.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "g-livraison",
+        "q-livraison-prix",
+        "q-livraison-delai",
+        "q-livraison-zone",
+        "q-livraison-emballage",
+        "g-retours",
+        "q-retours-delai",
+        "q-retours-comment",
+        "q-retours-abime",
+        "g-installation",
+        "q-install-materiel",
+        "q-install-temps",
+        "q-install-mur",
+        "q-install-charge",
+        "g-bois",
+        "q-bois-massif",
+        "q-bois-choix",
+        "q-bois-unique",
+        "q-bois-entretien",
+        "g-commande",
+        "q-paiement",
+        "q-modifier"
+      ]
+    },
+    "cta": {
+      "type": "rich-text",
+      "settings": {
+        "heading": "Une autre question ?",
+        "heading_tag": "h2",
+        "text": "<p>Nous lisons chaque message et y répondons personnellement.</p>",
+        "button_label": "Nous écrire",
+        "button_link": "/pages/contact",
+        "button_secondary": false,
+        "alignment": "center",
+        "background": "blanc",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    }
+  },
+  "order": [
+    "faq",
+    "cta"
+  ]
+}

@@ -1,0 +1,61 @@
+{%- comment -%} Colonnes : arguments, étapes de fabrication… (icône, numéro ou image). {%- endcomment -%}
+<section class="section-spacing bg-{{ section.settings.background }}" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="page-width">
+    {%- if section.settings.heading != blank -%}
+      <header class="section-header{% if section.settings.center %} section-header--center{% endif %}">
+        {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+        <h2 class="h2">{{ section.settings.heading }}</h2>
+        {%- if section.settings.text != blank -%}<div class="rte section-header__intro">{{ section.settings.text }}</div>{%- endif -%}
+      </header>
+    {%- endif -%}
+    <div class="columns columns--{{ section.blocks.size | at_most: 4 }}{% if section.settings.center %} columns--center{% endif %}">
+      {%- for block in section.blocks -%}
+        <div class="columns__item reveal" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <div class="columns__media ratio ratio--{{ section.settings.ratio }}">
+              {{ block.settings.image | image_url: width: 1000 | image_tag: loading: 'lazy', widths: '300, 500, 700, 1000', sizes: '(min-width: 990px) 33vw, 100vw', alt: block.settings.image.alt }}
+            </div>
+          {%- endif -%}
+          {%- case section.settings.marker -%}
+            {%- when 'number' -%}<span class="columns__number">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+            {%- when 'icon' -%}<span class="columns__icon">{% render 'icon', icon: block.settings.icon, size: 30 %}</span>
+          {%- endcase -%}
+          {%- if block.settings.title != blank -%}<h3 class="columns__title h4">{{ block.settings.title }}</h3>{%- endif -%}
+          {%- if block.settings.text != blank -%}<div class="columns__text rte">{{ block.settings.text }}</div>{%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Colonnes",
+  "tag": "div",
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Colonne",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "select", "id": "icon", "label": "Icône", "default": "wood", "options": [ { "value": "wood", "label": "Bois" }, { "value": "hand", "label": "Main" }, { "value": "truck", "label": "Camion" }, { "value": "return", "label": "Retour" }, { "value": "shield", "label": "Bouclier" }, { "value": "leaf", "label": "Feuille" }, { "value": "drill", "label": "Perceuse" }, { "value": "ruler", "label": "Règle" }, { "value": "box", "label": "Colis" }, { "value": "clock", "label": "Horloge" } ] },
+        { "type": "text", "id": "title", "label": "Titre", "default": "Bois massif" },
+        { "type": "richtext", "id": "text", "label": "Texte" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Sur-titre" },
+    { "type": "text", "id": "heading", "label": "Titre" },
+    { "type": "richtext", "id": "text", "label": "Introduction" },
+    { "type": "select", "id": "marker", "label": "Repère", "default": "icon", "options": [ { "value": "icon", "label": "Icône" }, { "value": "number", "label": "Numéro" }, { "value": "none", "label": "Aucun" } ] },
+    { "type": "select", "id": "ratio", "label": "Format des images", "default": "portrait", "options": [ { "value": "portrait", "label": "Portrait" }, { "value": "square", "label": "Carré" }, { "value": "landscape", "label": "Paysage" } ] },
+    { "type": "checkbox", "id": "center", "label": "Centré", "default": false },
+    { "type": "select", "id": "background", "label": "Fond", "default": "blanc", "options": [ { "value": "beige", "label": "Beige" }, { "value": "blanc", "label": "Blanc" } ] },
+    { "type": "range", "id": "padding_top", "label": "Marge haute", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 112 },
+    { "type": "range", "id": "padding_bottom", "label": "Marge basse", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 112 }
+  ],
+  "presets": [ { "name": "Colonnes", "blocks": [ { "type": "column" }, { "type": "column" }, { "type": "column" } ] } ]
+}
+{% endschema %}

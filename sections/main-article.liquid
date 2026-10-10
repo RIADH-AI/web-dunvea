@@ -1,0 +1,19 @@
+<article class="section-spacing" style="--pt: 64px; --pb: 112px;">
+  <div class="page-width page-width--text">
+    {%- render 'breadcrumbs' -%}
+    <header class="page-header">
+      <p class="eyebrow">{{ article.published_at | date: format: 'date' }}</p>
+      <h1 class="h1">{{ article.title | escape }}</h1>
+    </header>
+    {%- if article.image -%}
+      <div class="ratio ratio--landscape" style="margin-bottom: 3rem;">
+        {{ article.image | image_url: width: 1800 | image_tag: loading: 'eager', widths: '600, 900, 1200, 1800', sizes: '(min-width: 800px) 760px, 100vw', alt: article.image.alt }}
+      </div>
+    {%- endif -%}
+    <div class="rte rte--large">{{ article.content }}</div>
+  </div>
+</article>
+
+{% schema %}
+{ "name": "Article", "tag": "div", "settings": [] }
+{% endschema %}

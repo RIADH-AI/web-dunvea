@@ -1,0 +1,76 @@
+{%- paginate collection.products by section.settings.per_page -%}
+<section class="section-spacing" style="--pt: 48px; --pb: 112px;">
+  <div class="page-width">
+    {%- render 'breadcrumbs' -%}
+    <header class="collection-hero section-header section-header--center">
+      <h1 class="h1">{{ collection.title | escape }}</h1>
+      {%- if section.settings.show_description and collection.description != blank -%}
+        <div class="collection-hero__text rte">{{ collection.description }}</div>
+      {%- endif -%}
+    </header>
+
+    <div class="collection-toolbar">
+      <span>{{ 'collections.count' | t: count: collection.products_count }}</span>
+      {%- if section.settings.show_sort -%}
+        <form method="get" class="collection-toolbar__sort">
+          <label for="SortBy" class="visually-hidden">{{ 'collections.sort_by' | t }}</label>
+          {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+          <select name="sort_by" id="SortBy" class="select" onchange="this.form.submit()">
+            {%- for option in collection.sort_options -%}
+              <option value="{{ option.value | escape }}"{% if option.value == sort_by %} selected{% endif %}>{{ option.name | escape }}</option>
+            {%- endfor -%}
+          </select>
+          <noscript><button type="submit" class="link-button">OK</button></noscript>
+        </form>
+      {%- endif -%}
+    </div>
+
+    {%- if collection.products.size > 0 -%}
+      <ul class="product-grid product-grid--{{ section.settings.columns }}" role="list">
+        {%- for product in collection.products -%}
+          {%- liquid
+            assign lazy = true
+            if forloop.index <= 2
+              assign lazy = false
+            endif
+          -%}
+          <li>{%- render 'product-card', product: product, heading_tag: 'h2', lazy: lazy -%}</li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <p class="center-block">{{ 'collections.empty' | t }}</p>
+    {%- endif -%}
+
+    {%- if paginate.pages > 1 -%}
+      <nav aria-label="{{ 'general.pagination.label' | t }}">
+        <ul class="pagination" role="list">
+          {%- for part in paginate.parts -%}
+            <li>
+              {%- if part.is_link -%}
+                <a href="{{ part.url }}">{{ part.title }}</a>
+              {%- elsif part.title == paginate.current_page -%}
+                <span class="is-current" aria-current="page">{{ part.title }}</span>
+              {%- else -%}
+                <span>{{ part.title }}</span>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+    {%- endif -%}
+  </div>
+</section>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Collection",
+  "tag": "div",
+  "settings": [
+    { "type": "range", "id": "per_page", "label": "Produits par page", "min": 4, "max": 48, "step": 4, "default": 24 },
+    { "type": "select", "id": "columns", "label": "Colonnes (desktop)", "default": "3", "options": [ { "value": "3", "label": "3" }, { "value": "4", "label": "4" } ] },
+    { "type": "checkbox", "id": "show_description", "label": "Afficher la description", "default": true },
+    { "type": "checkbox", "id": "show_sort", "label": "Tri", "default": true }
+  ]
+}
+{% endschema %}

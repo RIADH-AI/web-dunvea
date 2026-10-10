@@ -1,0 +1,32 @@
+{% layout none %}
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="robots" content="noindex">
+    <title>{{ 'gift_cards.title' | t }} — {{ shop.name }}</title>
+    {%- render 'css-variables' -%}
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ content_for_header }}
+  </head>
+  <body>
+    <main class="password">
+      <div class="password__inner">
+        <span class="logo-text">{{ settings.logo_text | default: shop.name }}</span>
+        <h1 class="h2">{{ 'gift_cards.title' | t }}</h1>
+        <p class="price price--large" style="justify-content: center;"><span class="price__current">{{ gift_card.initial_value | money }}</span></p>
+        {%- if gift_card.balance != gift_card.initial_value -%}
+          {%- assign balance = gift_card.balance | money -%}
+          <p>{{ 'gift_cards.balance' | t: balance: balance }}</p>
+        {%- endif -%}
+        <p class="eyebrow" style="margin-top: 2rem;">{{ 'gift_cards.code' | t }}</p>
+        <p class="h3">{{ gift_card.code | format_code }}</p>
+        <div style="display: flex; gap: 0.75rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+          <a href="{{ shop.url }}" class="button">{{ 'gift_cards.use' | t }}</a>
+          <button type="button" class="button button--secondary" onclick="window.print()">{{ 'gift_cards.print' | t }}</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,509 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "show_breadcrumbs": true,
+        "sticky_bar": true,
+        "padding_top": 16,
+        "padding_bottom": 64
+      },
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "eyebrow": "Notre duo signature"
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {
+            "show_empty": true
+          }
+        },
+        "badges": {
+          "type": "badges",
+          "settings": {
+            "badge_1": "Fait main",
+            "badge_2": "Bois massif",
+            "badge_3": "Économisez 39 €"
+          }
+        },
+        "bullets": {
+          "type": "bullets",
+          "settings": {
+            "bullet_1": "Frêne massif européen — chaque pièce est unique",
+            "bullet_2": "Fixation invisible incluse — zéro vis apparente",
+            "bullet_3": "Fabriqué main dans notre atelier — pas de production de masse",
+            "bullet_4": "Livraison offerte en France métropolitaine"
+          }
+        },
+        "dimensions": {
+          "type": "dimensions",
+          "settings": {
+            "label": "Dimensions",
+            "text": "Étagère : 50 × 14 × 5 cm\nMiroir : 53 × 32 cm"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_savings": true,
+            "tax_note": "TVA incluse · Livraison offerte en France métropolitaine"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "swatch_colors": "Frêne: #D9B98C\nFrêne massif: #D9B98C\nAcajou: #6E3B2B"
+          }
+        },
+        "quantity": {
+          "type": "quantity",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "lead_time": "Fabriqué et expédié sous [X] jours ouvrés"
+          }
+        },
+        "reassurance": {
+          "type": "reassurance",
+          "settings": {
+            "icon_1": "truck",
+            "title_1": "Livraison offerte",
+            "text_1": "France métropolitaine",
+            "icon_2": "return",
+            "title_2": "Retours 14 jours",
+            "text_2": "Dans l'emballage d'origine",
+            "icon_3": "wood",
+            "title_3": "Bois massif véritable",
+            "text_3": "Ni placage, ni MDF",
+            "icon_4": "hand",
+            "title_4": "Fabriqué main",
+            "text_4": "Dans notre atelier"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "rating",
+        "badges",
+        "bullets",
+        "dimensions",
+        "price",
+        "variant_picker",
+        "quantity",
+        "buy_buttons",
+        "reassurance"
+      ]
+    },
+    "story": {
+      "type": "product-story",
+      "settings": {
+        "anchor": "description",
+        "background": "beige",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "chapter-histoire": {
+          "type": "chapter",
+          "settings": {
+            "eyebrow": "L'histoire",
+            "heading": "Un mur qui a du caractère",
+            "text": "<p>Un mur vide raconte peu de choses. Le Duo DUNVEA — une étagère flottante et un miroir organique — transforme n'importe quel mur en un espace qui a du caractère. L'étagère semble flotter, le miroir adoucit les lignes. Ensemble, ils créent un point focal naturel dans votre salon, votre entrée ou votre bureau.</p><p>Ce n'est pas du mobilier décoratif jetable. C'est du frêne massif européen, travaillé à la main, conçu pour durer et vieillir avec grâce. Dans dix ans, le grain du bois aura pris une patine que l'aggloméré ne connaîtra jamais.</p>",
+            "show_placeholder": false,
+            "ratio": "portrait"
+          }
+        },
+        "chapter-materiaux": {
+          "type": "chapter",
+          "settings": {
+            "eyebrow": "Les matériaux",
+            "heading": "Du bois massif, de bout en bout",
+            "text": "<p>Le frêne est l'un des bois les plus nobles d'Europe. Dense, résistant, naturellement veiné — il est utilisé en ébénisterie depuis des siècles pour les pièces qui doivent durer. Sa couleur naturelle, entre le blond et le miel, s'intègre aussi bien dans un intérieur scandinave que dans un appartement haussmannien.</p><p>Chaque pièce est taillée dans un bloc unique. Pas de placage, pas de MDF caché sous une couche de vernis. Du bois massif de bout en bout. C'est ce que vous touchez quand vous passez la main sur le bois — le grain réel, pas une imitation imprimée.</p><p><strong>Vous préférez une teinte plus profonde ?</strong> L'acajou est un bois sombre, au grain profond et chaleureux. Sa couleur brun-rouge apporte immédiatement une présence chaleureuse et sophistiquée.</p>",
+            "show_placeholder": false,
+            "ratio": "portrait"
+          }
+        },
+        "chapter-fabrication": {
+          "type": "chapter",
+          "settings": {
+            "eyebrow": "La fabrication",
+            "heading": "Le même atelier, les mêmes mains",
+            "text": "<p>Chaque étagère et chaque miroir sort du même atelier, des mêmes mains. La découpe, le ponçage, la mise en forme du biseau, la finition — tout est fait manuellement. Ce n'est pas un argument marketing : c'est une contrainte que nous avons choisie, parce qu'une machine ne sent pas le bois comme un artisan le sent.</p><p>Le résultat : deux pièces ne sont jamais parfaitement identiques. Les veines du bois, la nuance exacte de la couleur, la subtilité du grain — ce sont les signatures de votre pièce.</p>",
+            "show_placeholder": false,
+            "ratio": "portrait"
+          }
+        }
+      },
+      "block_order": [
+        "chapter-histoire",
+        "chapter-materiaux",
+        "chapter-fabrication"
+      ]
+    },
+    "specs": {
+      "type": "product-specs",
+      "settings": {
+        "anchor": "caracteristiques",
+        "eyebrow": "Fiche technique",
+        "heading": "Dimensions et caractéristiques",
+        "background": "blanc",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "group-1": {
+          "type": "group",
+          "settings": {
+            "title": "Étagère"
+          }
+        },
+        "row-1-1": {
+          "type": "row",
+          "settings": {
+            "label": "Dimensions",
+            "value": "50 × 14 × 5 cm (L × P × H)"
+          }
+        },
+        "row-1-2": {
+          "type": "row",
+          "settings": {
+            "label": "Matériau",
+            "value": "Frêne massif européen ou acajou"
+          }
+        },
+        "row-1-3": {
+          "type": "row",
+          "settings": {
+            "label": "Finition",
+            "value": "Naturelle, huile protectrice"
+          }
+        },
+        "row-1-4": {
+          "type": "row",
+          "settings": {
+            "label": "Arête avant",
+            "value": "Biseautée à la main"
+          }
+        },
+        "row-1-5": {
+          "type": "row",
+          "settings": {
+            "label": "Fixation",
+            "value": "Système invisible inclus (vis + chevilles + gabarit de perçage)"
+          }
+        },
+        "row-1-6": {
+          "type": "row",
+          "settings": {
+            "label": "Charge supportée",
+            "value": "[à confirmer]"
+          }
+        },
+        "row-1-7": {
+          "type": "row",
+          "settings": {
+            "label": "Poids",
+            "value": "[à confirmer]"
+          }
+        },
+        "group-2": {
+          "type": "group",
+          "settings": {
+            "title": "Miroir"
+          }
+        },
+        "row-2-1": {
+          "type": "row",
+          "settings": {
+            "label": "Dimensions",
+            "value": "53 × 32 cm"
+          }
+        },
+        "row-2-2": {
+          "type": "row",
+          "settings": {
+            "label": "Cadre",
+            "value": "Frêne massif européen ou acajou"
+          }
+        },
+        "row-2-3": {
+          "type": "row",
+          "settings": {
+            "label": "Miroir",
+            "value": "Verre de qualité optique"
+          }
+        },
+        "row-2-4": {
+          "type": "row",
+          "settings": {
+            "label": "Forme",
+            "value": "Organique, chaque pièce est unique"
+          }
+        },
+        "row-2-5": {
+          "type": "row",
+          "settings": {
+            "label": "Fixation",
+            "value": "Rail dissimulé derrière le cadre"
+          }
+        },
+        "row-2-6": {
+          "type": "row",
+          "settings": {
+            "label": "Poids",
+            "value": "[à confirmer]"
+          }
+        }
+      },
+      "block_order": [
+        "group-1",
+        "row-1-1",
+        "row-1-2",
+        "row-1-3",
+        "row-1-4",
+        "row-1-5",
+        "row-1-6",
+        "row-1-7",
+        "group-2",
+        "row-2-1",
+        "row-2-2",
+        "row-2-3",
+        "row-2-4",
+        "row-2-5",
+        "row-2-6"
+      ]
+    },
+    "installation": {
+      "type": "product-steps",
+      "settings": {
+        "anchor": "installation",
+        "eyebrow": "Installation",
+        "heading": "Dix minutes, une perceuse, un niveau.",
+        "intro": "<p>Tout est fourni. Vous avez besoin d'une perceuse et d'un niveau à bulle. C'est tout.</p>",
+        "note": "<p><strong>Temps total : 10 minutes.</strong> Le système fonctionne sur mur placo et béton.</p>",
+        "background": "blanc",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "step-1": {
+          "type": "step",
+          "settings": {
+            "title": "Positionnez le gabarit",
+            "text": "Placez le gabarit de perçage au mur (inclus dans la boîte) et vérifiez l'horizontalité au niveau à bulle."
+          }
+        },
+        "step-2": {
+          "type": "step",
+          "settings": {
+            "title": "Percez et chevillez",
+            "text": "Percez les 2 trous, insérez les chevilles."
+          }
+        },
+        "step-3": {
+          "type": "step",
+          "settings": {
+            "title": "Vissez les supports",
+            "text": "Vissez les supports invisibles."
+          }
+        },
+        "step-4": {
+          "type": "step",
+          "settings": {
+            "title": "Accrochez",
+            "text": "Accrochez l'étagère et le miroir."
+          }
+        }
+      },
+      "block_order": [
+        "step-1",
+        "step-2",
+        "step-3",
+        "step-4"
+      ]
+    },
+    "care": {
+      "type": "product-info-list",
+      "settings": {
+        "anchor": "entretien",
+        "eyebrow": "Entretien",
+        "heading": "Le bois massif ne demande presque rien",
+        "intro": "<p>Quelques gestes simples suffisent à le garder beau pendant des années.</p>",
+        "note": "<p>Le frêne vieillit en beauté. Son grain se patine naturellement — c'est un signe de qualité, pas un défaut.</p>",
+        "background": "beige",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "care-1": {
+          "type": "item",
+          "settings": {
+            "icon": "leaf",
+            "title": "Dépoussiérer",
+            "text": "Un chiffon doux et sec suffit."
+          }
+        },
+        "care-2": {
+          "type": "item",
+          "settings": {
+            "icon": "close",
+            "title": "Éviter l'eau stagnante",
+            "text": "Essuyez rapidement une trace d'eau ou un verre posé sur le bois."
+          }
+        },
+        "care-3": {
+          "type": "item",
+          "settings": {
+            "icon": "wood",
+            "title": "Nourrir le bois (optionnel)",
+            "text": "Une huile naturelle — lin ou tung — une à deux fois par an, si vous voulez raviver le grain."
+          }
+        },
+        "care-4": {
+          "type": "item",
+          "settings": {
+            "icon": "check",
+            "title": "Le miroir",
+            "text": "Il se nettoie avec un spray vitres classique, appliqué sur le chiffon plutôt que sur le verre."
+          }
+        }
+      },
+      "block_order": [
+        "care-1",
+        "care-2",
+        "care-3",
+        "care-4"
+      ]
+    },
+    "shipping": {
+      "type": "product-info-list",
+      "settings": {
+        "anchor": "livraison",
+        "eyebrow": "Livraison et retours",
+        "heading": "Expédié avec soin, chez vous",
+        "background": "blanc",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "ship-1": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "title": "Livraison offerte",
+            "text": "En France métropolitaine, sans minimum d'achat."
+          }
+        },
+        "ship-2": {
+          "type": "item",
+          "settings": {
+            "icon": "clock",
+            "title": "Délai",
+            "text": "Fabrication artisanale + expédition : [X] jours ouvrés."
+          }
+        },
+        "ship-3": {
+          "type": "item",
+          "settings": {
+            "icon": "box",
+            "title": "Emballage renforcé",
+            "text": "Spécialement conçu pour protéger le bois massif pendant le transport."
+          }
+        },
+        "ship-4": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "title": "Retours sous 14 jours",
+            "text": "Le produit doit être renvoyé dans son emballage d'origine."
+          }
+        }
+      },
+      "block_order": [
+        "ship-1",
+        "ship-2",
+        "ship-3",
+        "ship-4"
+      ]
+    },
+    "reviews": {
+      "type": "product-reviews",
+      "settings": {
+        "eyebrow": "Avis clients",
+        "heading": "Ils ont choisi DUNVEA",
+        "empty_title": "Soyez le premier à donner votre avis",
+        "empty_text": "<p>Vous avez installé une pièce DUNVEA chez vous ? Racontez-nous comment elle a trouvé sa place.</p>",
+        "hide_when_empty": false,
+        "background": "beige",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    },
+    "upsell": {
+      "type": "complete-your-wall",
+      "settings": {
+        "product": "pack-mural-complet-frene-massif",
+        "eyebrow": "Complétez votre mur",
+        "heading": "Passez au mur complet",
+        "text": "<p>Ajoutez une seconde étagère pour habiller un mur entier. Le pack réunit les trois pièces, taillées dans le même bois et finies de la même main.</p>",
+        "button_label": "Découvrir le pack",
+        "background": "beige",
+        "padding_top": 96,
+        "padding_bottom": 96
+      },
+      "blocks": {
+        "inc-1": {
+          "type": "include",
+          "settings": {
+            "text": "2 étagères flottantes + 1 miroir organique"
+          }
+        },
+        "inc-2": {
+          "type": "include",
+          "settings": {
+            "text": "58 € d'économie par rapport aux pièces séparées"
+          }
+        },
+        "inc-3": {
+          "type": "include",
+          "settings": {
+            "text": "Fixation invisible incluse pour les trois pièces"
+          }
+        }
+      },
+      "block_order": [
+        "inc-1",
+        "inc-2",
+        "inc-3"
+      ]
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "Vous aimerez aussi",
+        "products_to_show": 3,
+        "intent": "related",
+        "background": "blanc",
+        "padding_top": 96,
+        "padding_bottom": 96
+      }
+    }
+  },
+  "order": [
+    "main",
+    "story",
+    "specs",
+    "installation",
+    "care",
+    "shipping",
+    "reviews",
+    "upsell",
+    "recommendations"
+  ]
+}

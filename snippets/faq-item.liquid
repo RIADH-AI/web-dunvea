@@ -1,0 +1,5 @@
+{%- comment -%} Question de FAQ en accordéon. Paramètre : block {%- endcomment -%}
+<details class="accordion" {{ block.shopify_attributes }}>
+  <summary>{{ block.settings.question }}{% render 'icon', icon: 'plus', size: 18 %}</summary>
+  <div class="accordion__content rte">{{ block.settings.answer }}</div>
+</details>

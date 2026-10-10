@@ -1,0 +1,39 @@
+{%- comment -%}
+  Prix avec prix barré et économie.
+  Paramètres :
+  - product : produit (obligatoire)
+  - variant : variante (optionnel, défaut : variante sélectionnée)
+  - size : 'large' pour la page produit
+  - show_savings : affiche « Économisez X € »
+{%- endcomment -%}
+{%- liquid
+  assign target = variant | default: product.selected_or_first_available_variant
+  assign price = target.price
+  assign compare_at = target.compare_at_price
+  assign on_sale = false
+  if compare_at > price
+    assign on_sale = true
+    assign savings = compare_at | minus: price | money
+  endif
+  assign show_from = false
+  if variant == blank and product.price_varies and size != 'large'
+    assign show_from = true
+    assign price = product.price_min
+  endif
+-%}
+<div class="price{% if size == 'large' %} price--large{% endif %}{% if on_sale %} price--on-sale{% endif %}" data-price>
+  <span class="visually-hidden">{{ 'products.product.price.regular' | t }}</span>
+  <span class="price__current" data-price-current>
+    {%- if show_from -%}{{ 'products.product.price.from' | t }} {% endif -%}
+    {{- price | money -}}
+  </span>
+  <s class="price__compare" data-price-compare{% unless on_sale %} hidden{% endunless %}>
+    <span class="visually-hidden">{{ 'products.product.price.compare_at' | t }}</span>
+    {%- if on_sale -%}{{ compare_at | money }}{%- endif -%}
+  </s>
+  {%- if show_savings -%}
+    <span class="price__savings" data-price-savings{% unless on_sale %} hidden{% endunless %}>
+      {%- if on_sale -%}{{ 'products.product.you_save' | t: amount: savings }}{%- endif -%}
+    </span>
+  {%- endif -%}
+</div>

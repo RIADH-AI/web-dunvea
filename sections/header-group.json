@@ -1,0 +1,24 @@
+{
+  "type": "header",
+  "name": "En-tête",
+  "sections": {
+    "announcement": {
+      "type": "announcement-bar",
+      "blocks": {
+        "msg-1": { "type": "message", "settings": { "text": "Livraison offerte en France métropolitaine", "link": "" } },
+        "msg-2": { "type": "message", "settings": { "text": "Fait main dans notre atelier · Bois massif", "link": "" } },
+        "msg-3": { "type": "message", "settings": { "text": "Retours acceptés sous 14 jours", "link": "" } }
+      },
+      "block_order": ["msg-1", "msg-2", "msg-3"],
+      "settings": { "speed": 5 }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu",
+        "drawer_note": "Livraison offerte en France métropolitaine · Retours 14 jours"
+      }
+    }
+  },
+  "order": ["announcement", "header"]
+}
